@@ -1,0 +1,10 @@
+/* ═══════════════════════════════════════════════════════════
+   MAIN STYLESHEET — Import Aggregator
+   ═══════════════════════════════════════════════════════════ */
+
+@import './_variables.css';
+@import './_reset.css';
+@import './_typography.css';
+@import './_glass.css';
+@import './_layout.css';
+@import './_components.css';

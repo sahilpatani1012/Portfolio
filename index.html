@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sahil Patani — Software Engineer</title>
+  <meta name="description" content="Portfolio of Sahil Patani — Software Engineer with 2+ years of experience building scalable, production-grade web systems. Based in Hyderabad, India." />
+  <meta name="author" content="Sahil Patani" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Sahil Patani — Software Engineer" />
+  <meta property="og:description" content="Building performant, scalable web experiences. 2+ years of backend-heavy, production-grade systems." />
+  <meta property="og:url" content="https://sahilpatani.dev" />
+  <meta property="og:image" content="/images/og-image.png" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Sahil Patani — Software Engineer" />
+  <meta name="twitter:description" content="Building performant, scalable web experiences." />
+  <meta name="twitter:image" content="/images/og-image.png" />
+
+  <link rel="canonical" href="https://sahilpatani.dev" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+  <!-- Font preconnect -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+  <!-- JSON-LD -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Sahil Patani",
+    "url": "https://sahilpatani.dev",
+    "email": "spatani9@gmail.com",
+    "jobTitle": "Software Engineer",
+    "worksFor": { "@type": "Organization", "name": "Thriving Springs" },
+    "address": { "@type": "PostalAddress", "addressLocality": "Hyderabad", "addressCountry": "IN" },
+    "sameAs": [
+      "https://github.com/sahilpatani1012",
+      "https://www.linkedin.com/in/sahil-patani-2721231b8/"
+    ]
+  }
+  </script>
+
+  <script type="module" src="/src/main.js"></script>
+</head>
+<body>
+  <!-- Skip to content -->
+  <a href="#main-content" class="skip-to-content">Skip to content</a>
+
+  <!-- ═══════════ PRELOADER ═══════════ -->
+  <div class="preloader" id="preloader" aria-hidden="true">
+    <div class="preloader-content">
+      <div class="preloader-name" id="preloader-name">SAHIL PATANI</div>
+      <div class="preloader-counter" id="preloader-counter">0</div>
+    </div>
+    <div class="preloader-bar">
+      <div class="preloader-bar-fill" id="preloader-bar"></div>
+    </div>
+    <div class="preloader-top" id="preloader-top"></div>
+    <div class="preloader-bottom" id="preloader-bottom"></div>
+  </div>
+
+  <!-- ═══════════ CUSTOM CURSOR ═══════════ -->
+  <div class="cursor-outer" id="cursor-outer" aria-hidden="true"></div>
+  <div class="cursor-inner" id="cursor-inner" aria-hidden="true"></div>
+
+  <!-- ═══════════ NAVIGATION ═══════════ -->
+  <nav class="nav glass-nav" id="navbar" role="navigation" aria-label="Main navigation">
+    <div class="nav-inner">
+      <a href="#hero" class="nav-logo" data-magnetic>
+        <span class="logo-text">SP</span>
+      </a>
+      <div class="nav-links hide-mobile">
+        <a href="#hero" class="nav-link active" data-nav-link data-magnetic>Home</a>
+        <a href="#about" class="nav-link" data-nav-link data-magnetic>About</a>
+        <a href="#skills" class="nav-link" data-nav-link data-magnetic>Skills</a>
+        <a href="#projects" class="nav-link" data-nav-link data-magnetic>Projects</a>
+        <a href="#experience" class="nav-link" data-nav-link data-magnetic>Experience</a>
+        <a href="#contact" class="nav-link" data-nav-link data-magnetic>Contact</a>
+      </div>
+      <div class="nav-actions">
+        <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme" data-magnetic>
+          <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+          </svg>
+          <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:none">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+          </svg>
+        </button>
+        <button class="hamburger hide-desktop" id="hamburger" aria-label="Open menu" aria-expanded="false">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+            <path class="hamburger-top" d="M3 6h18"/>
+            <path class="hamburger-mid" d="M3 12h18"/>
+            <path class="hamburger-bot" d="M3 18h18"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Mobile Menu -->
+  <div class="mobile-menu" id="mobile-menu" role="dialog" aria-label="Mobile navigation">
+    <a href="#hero" class="mobile-link" data-mobile-link>Home</a>
+    <a href="#about" class="mobile-link" data-mobile-link>About</a>
+    <a href="#skills" class="mobile-link" data-mobile-link>Skills</a>
+    <a href="#projects" class="mobile-link" data-mobile-link>Projects</a>
+    <a href="#experience" class="mobile-link" data-mobile-link>Experience</a>
+    <a href="#contact" class="mobile-link" data-mobile-link>Contact</a>
+  </div>
+
+  <!-- ═══════════ THREE.JS CANVAS ═══════════ -->
+  <canvas class="hero-canvas" id="hero-canvas" aria-hidden="true"></canvas>
+
+  <!-- ═══════════ MAIN CONTENT ═══════════ -->
+  <main id="main-content">
+
+    <!-- HERO -->
+    <section class="hero section-fullscreen" id="hero" aria-label="Introduction">
+      <div class="container">
+        <div class="hero-content">
+          <p class="tagline hero-tagline" id="hero-tagline">SOFTWARE ENGINEER</p>
+          <h1 class="hero-heading hero-title" id="hero-title">Hi, I'm <span>Sahil</span></h1>
+          <p class="hero-subtitle" id="hero-subtitle">I build performant, scalable web systems that handle real-world complexity — from APIs serving 200k+ users to real-time collaboration platforms.</p>
+          <div class="hero-ctas" id="hero-ctas">
+            <a href="#projects" class="btn-primary" data-magnetic>View My Work</a>
+            <a href="#contact" class="btn-outline" data-magnetic>Get In Touch</a>
+          </div>
+        </div>
+      </div>
+      <div class="scroll-indicator" id="scroll-indicator">
+        <span class="scroll-indicator-text">Scroll to explore</span>
+        <svg class="scroll-indicator-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="6 9 12 15 18 9"/>
+        </svg>
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section class="section bg-secondary" id="about" aria-label="About me">
+      <div class="container">
+        <h2 class="section-heading" data-animate="heading">
+          <span class="heading-number">01.</span> About Me
+        </h2>
+        <div class="grid-two-col">
+          <div class="about-text" id="about-text">
+            <p class="body-text-lg">A passionate software engineer based in Hyderabad with 2+ years of experience building and operating backend-heavy, production-grade web systems in a high-scale startup environment.</p>
+            <p class="body-text-lg" style="margin-top: var(--space-lg);">I specialize in API design, data modeling, and performance optimization — with hands-on experience improving latency, scalability, and system reliability for products serving hundreds of thousands of users.</p>
+            <p class="body-text-lg" style="margin-top: var(--space-lg);">My work at Thriving Springs involves enterprise clients like Uber, HDFC Ergo, and InCred — where I own features end-to-end, reason about trade-offs, and deliver measurable impact in distributed systems.</p>
+          </div>
+          <div class="about-visual" id="about-visual">
+            <div class="about-avatar glass-card"><span>SP</span></div>
+            <div class="stat-card glass-card" data-animate="stat">
+              <div class="stat-number" data-count="2">0</div>
+              <div class="stat-label">Years Experience</div>
+            </div>
+            <div class="stat-card glass-card" data-animate="stat">
+              <div class="stat-number" data-count="200" data-suffix="k+">0</div>
+              <div class="stat-label">Users Impacted</div>
+            </div>
+            <div class="stat-card glass-card" data-animate="stat">
+              <div class="stat-number" data-count="300" data-suffix="+">0</div>
+              <div class="stat-label">LeetCode Problems</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SKILLS -->
+    <section class="section" id="skills" aria-label="Technical skills">
+      <div class="container">
+        <h2 class="section-heading" data-animate="heading">
+          <span class="heading-number">02.</span> Tech Stack
+        </h2>
+        <div class="bento-grid" id="skills-grid">
+          <div class="skill-card glass-card bento-wide" data-animate="skill">
+            <span class="skill-category">Languages</span>
+            <div class="skill-icon"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 22 12 18.27 5.82 22 7 14.14l-5-4.87 6.91-1.01L12 2z"/></svg></div>
+            <span class="skill-name">Python · JavaScript · TypeScript · C++</span>
+          </div>
+          <div class="skill-card glass-card" data-animate="skill">
+            <span class="skill-category">Backend</span>
+            <div class="skill-icon"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 15v-4H7l5-7v4h4l-5 7z"/></svg></div>
+            <span class="skill-name">Node.js · Express.js</span>
+          </div>
+          <div class="skill-card glass-card" data-animate="skill">
+            <span class="skill-category">Backend</span>
+            <div class="skill-icon"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 6.627 5.37 12 12 12 6.626 0 12-5.373 12-12C24 5.373 18.626 0 12 0zm-.624 21.62v-7.528H7.19L13.2 2.38v7.528h4.03L11.376 21.62z"/></svg></div>
+            <span class="skill-name">FastAPI · REST APIs</span>
+          </div>
+          <div class="skill-card glass-card" data-animate="skill">
+            <span class="skill-category">Frontend</span>
+            <div class="skill-icon"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M14.23 12a2.23 2.23 0 1 1-4.46 0 2.23 2.23 0 0 1 4.46 0zm-2.23 8c-4.42 0-8-1.79-8-4s3.58-4 8-4 8 1.79 8 4-3.58 4-8 4zm0-16C7.58 4 4 5.79 4 8s3.58 4 8 4 8-1.79 8-4-3.58-4-8-4z"/></svg></div>
+            <span class="skill-name">React · Angular</span>
+          </div>
+          <div class="skill-card glass-card bento-wide" data-animate="skill">
+            <span class="skill-category">Database</span>
+            <div class="skill-icon"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 4.69 2 8v8c0 3.31 4.48 6 10 6s10-2.69 10-6V8c0-3.31-4.48-6-10-6zm0 2c4.42 0 8 1.79 8 4s-3.58 4-8 4-8-1.79-8-4 3.58-4 8-4z"/></svg></div>
+            <span class="skill-name">MongoDB · MySQL · PostgreSQL</span>
+          </div>
+          <div class="skill-card glass-card" data-animate="skill">
+            <span class="skill-category">Cache</span>
+            <div class="skill-icon"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg></div>
+            <span class="skill-name">Redis</span>
+          </div>
+          <div class="skill-card glass-card" data-animate="skill">
+            <span class="skill-category">Protocol</span>
+            <div class="skill-icon"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M1 9l2 2c4.97-4.97 13.03-4.97 18 0l2-2C16.93 2.93 7.08 2.93 1 9zm8 8l3 3 3-3a4.237 4.237 0 0 0-6 0zm-4-4l2 2a7.074 7.074 0 0 1 10 0l2-2C15.14 9.14 8.87 9.14 5 13z"/></svg></div>
+            <span class="skill-name">WebSockets</span>
+          </div>
+          <div class="skill-card glass-card" data-animate="skill">
+            <span class="skill-category">DevOps</span>
+            <div class="skill-icon"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M22.67 12.36c-.03-.15-.18-.28-.35-.28h-.55c-.09-.68-.29-1.32-.57-1.91l.47-.27c.15-.09.22-.27.17-.43a8.97 8.97 0 0 0-1.4-2.4c-.12-.14-.3-.17-.46-.1l-.48.28a6.87 6.87 0 0 0-1.56-1.56l.28-.48c.08-.16.05-.34-.1-.46a8.97 8.97 0 0 0-2.4-1.4c-.16-.06-.34.02-.43.17L15.02 5c-.59-.28-1.23-.48-1.91-.57v-.55c0-.17-.13-.32-.28-.35a9.1 9.1 0 0 0-2.78 0c-.15.03-.28.18-.28.35v.55c-.68.09-1.32.29-1.91.57l-.27-.47c-.09-.15-.27-.22-.43-.17a8.97 8.97 0 0 0-2.4 1.4c-.14.12-.17.3-.1.46l.28.48a6.87 6.87 0 0 0-1.56 1.56l-.48-.28c-.16-.08-.34-.04-.46.1a8.97 8.97 0 0 0-1.4 2.4c-.06.16.02.34.17.43l.47.27c-.28.59-.48 1.23-.57 1.91h-.55c-.17 0-.32.13-.35.28a9.1 9.1 0 0 0 0 2.78c.03.15.18.28.35.28h.55c.09.68.29 1.32.57 1.91l-.47.27c-.15.09-.22.27-.17.43a8.97 8.97 0 0 0 1.4 2.4c.12.14.3.17.46.1l.48-.28a6.87 6.87 0 0 0 1.56 1.56l-.28.48c-.08.16-.04.34.1.46a8.97 8.97 0 0 0 2.4 1.4c.16.06.34-.02.43-.17l.27-.47c.59.28 1.23.48 1.91.57v.55c0 .17.13.32.28.35a9.1 9.1 0 0 0 2.78 0c.15-.03.28-.18.28-.35v-.55c.68-.09 1.32-.29 1.91-.57l.27.47c.09.15.27.22.43.17a8.97 8.97 0 0 0 2.4-1.4c.14-.12.17-.3.1-.46l-.28-.48a6.87 6.87 0 0 0 1.56-1.56l.48.28c.16.08.34.04.46-.1a8.97 8.97 0 0 0 1.4-2.4c.06-.16-.02-.34-.17-.43l-.47-.27c.28-.59.48-1.23.57-1.91h.55c.17 0 .32-.13.35-.28a9.1 9.1 0 0 0 0-2.78zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8z"/></svg></div>
+            <span class="skill-name">Docker · Kubernetes</span>
+          </div>
+          <div class="skill-card glass-card bento-wide" data-animate="skill">
+            <span class="skill-category">Cloud & Infra</span>
+            <div class="skill-icon"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M19.35 10.04A7.49 7.49 0 0 0 12 4C9.11 4 6.6 5.64 5.35 8.04A5.994 5.994 0 0 0 0 14c0 3.31 2.69 6 6 6h13c2.76 0 5-2.24 5-5 0-2.64-2.05-4.78-4.65-4.96z"/></svg></div>
+            <span class="skill-name">AWS (EC2, S3, IAM, RDS) · Linux · Nginx · CI/CD</span>
+          </div>
+          <div class="skill-card glass-card" data-animate="skill">
+            <span class="skill-category">Architecture</span>
+            <div class="skill-icon"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M22 9V7h-2V5c0-1.1-.9-2-2-2H4c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2v-2h2v-2h-2v-2h2v-2h-2V9h2zm-4 10H4V5h14v14zM6 13h5v4H6zm6-6h4v3h-4zM6 7h5v5H6zm6 4h4v6h-4z"/></svg></div>
+            <span class="skill-name">Microservices · System Design</span>
+          </div>
+          <div class="skill-card glass-card" data-animate="skill">
+            <span class="skill-category">Tools</span>
+            <div class="skill-icon"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.44 9.8 8.21 11.39.6.11.79-.26.79-.58v-2.03c-3.34.73-4.04-1.61-4.04-1.61-.55-1.39-1.33-1.76-1.33-1.76-1.09-.74.08-.73.08-.73 1.2.08 1.84 1.24 1.84 1.24 1.07 1.83 2.81 1.3 3.49 1 .11-.78.42-1.3.76-1.6-2.67-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.12-.3-.54-1.52.12-3.18 0 0 1.01-.32 3.3 1.23a11.5 11.5 0 0 1 6.01 0c2.29-1.55 3.3-1.23 3.3-1.23.66 1.65.24 2.87.12 3.18.77.84 1.24 1.91 1.24 3.22 0 4.61-2.81 5.63-5.48 5.92.43.37.82 1.1.82 2.22v3.29c0 .32.19.69.8.58C20.57 21.8 24 17.3 24 12c0-6.63-5.37-12-12-12z"/></svg></div>
+            <span class="skill-name">Git</span>
+          </div>
+        </div>
+
+        <!-- Marquee -->
+        <div class="marquee-wrap" aria-hidden="true">
+          <div class="marquee-track" id="marquee-track">
+            <span class="marquee-item"><span class="dot"></span> Python</span>
+            <span class="marquee-item"><span class="dot"></span> JavaScript</span>
+            <span class="marquee-item"><span class="dot"></span> TypeScript</span>
+            <span class="marquee-item"><span class="dot"></span> Node.js</span>
+            <span class="marquee-item"><span class="dot"></span> React</span>
+            <span class="marquee-item"><span class="dot"></span> Angular</span>
+            <span class="marquee-item"><span class="dot"></span> FastAPI</span>
+            <span class="marquee-item"><span class="dot"></span> MongoDB</span>
+            <span class="marquee-item"><span class="dot"></span> PostgreSQL</span>
+            <span class="marquee-item"><span class="dot"></span> Redis</span>
+            <span class="marquee-item"><span class="dot"></span> Docker</span>
+            <span class="marquee-item"><span class="dot"></span> AWS</span>
+            <span class="marquee-item"><span class="dot"></span> Kubernetes</span>
+            <span class="marquee-item"><span class="dot"></span> Python</span>
+            <span class="marquee-item"><span class="dot"></span> JavaScript</span>
+            <span class="marquee-item"><span class="dot"></span> TypeScript</span>
+            <span class="marquee-item"><span class="dot"></span> Node.js</span>
+            <span class="marquee-item"><span class="dot"></span> React</span>
+            <span class="marquee-item"><span class="dot"></span> Angular</span>
+            <span class="marquee-item"><span class="dot"></span> FastAPI</span>
+            <span class="marquee-item"><span class="dot"></span> MongoDB</span>
+            <span class="marquee-item"><span class="dot"></span> PostgreSQL</span>
+            <span class="marquee-item"><span class="dot"></span> Redis</span>
+            <span class="marquee-item"><span class="dot"></span> Docker</span>
+            <span class="marquee-item"><span class="dot"></span> AWS</span>
+            <span class="marquee-item"><span class="dot"></span> Kubernetes</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROJECTS -->
+    <section class="section" id="projects" aria-label="Projects">
+      <div class="container">
+        <h2 class="section-heading" data-animate="heading">
+          <span class="heading-number">03.</span> Featured Projects
+        </h2>
+      </div>
+      <div class="projects-wrapper container" id="projects-wrapper">
+        <!-- Project 1 -->
+        <div class="project-card" data-project="1">
+          <div class="project-card-inner glass-card-gradient">
+            <div class="project-image-wrap">
+              <div class="project-image" style="background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%); width:100%; height:100%;"></div>
+              <div class="project-image-overlay"></div>
+              <div class="project-curtain"></div>
+            </div>
+            <div class="project-info">
+              <div class="project-counter"><span class="counter-current">01</span> / 04</div>
+              <h3 class="project-title">Real-Time Kanban Board</h3>
+              <p class="project-description">Live collaboration system using WebSockets, supporting 50+ concurrent users with sub-100ms event propagation. Features drag-and-drop sync, user presence, optimistic locking, and JWT auth.</p>
+              <div class="project-tags">
+                <span class="glass-tag">Node.js</span><span class="glass-tag">Socket.io</span><span class="glass-tag">MongoDB</span><span class="glass-tag">Angular</span><span class="glass-tag">Express.js</span>
+              </div>
+              <!-- <div class="project-links">
+                <a href="https://github.com/sahilpatani1012" target="_blank" rel="noopener noreferrer" class="btn-outline" data-magnetic>
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="margin-right:6px"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.44 9.8 8.21 11.39.6.11.79-.26.79-.58v-2.23c-3.34.73-4.04-1.42-4.04-1.42-.55-1.39-1.33-1.76-1.33-1.76-1.09-.74.08-.73.08-.73 1.2.08 1.84 1.24 1.84 1.24 1.07 1.83 2.81 1.3 3.49 1 .11-.78.42-1.3.76-1.6-2.67-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.12-.3-.54-1.52.12-3.18 0 0 1.01-.32 3.3 1.23a11.5 11.5 0 0 1 6.01 0c2.29-1.55 3.3-1.23 3.3-1.23.66 1.65.24 2.87.12 3.18.77.84 1.24 1.91 1.24 3.22 0 4.61-2.81 5.63-5.48 5.92.43.37.82 1.1.82 2.22v3.29c0 .32.19.69.8.58C20.57 21.8 24 17.3 24 12c0-6.63-5.37-12-12-12z"/></svg>
+                  Source Code
+                </a>
+              </div> -->
+            </div>
+          </div>
+        </div>
+        <!-- Project 2 -->
+        <div class="project-card" data-project="2">
+          <div class="project-card-inner glass-card-gradient">
+            <div class="project-image-wrap">
+              <div class="project-image" style="background: linear-gradient(135deg, #0f0c29 0%, #302b63 50%, #24243e 100%); width:100%; height:100%;"></div>
+              <div class="project-image-overlay"></div>
+              <div class="project-curtain"></div>
+            </div>
+            <div class="project-info">
+              <div class="project-counter"><span class="counter-current">02</span> / 04</div>
+              <h3 class="project-title">Teacher-Course Management</h3>
+              <p class="project-description">Containerized CRUD platform with normalized relational schemas, optimized joins, role-based access control, and robust validation. Dockerized for reproducible builds.</p>
+              <div class="project-tags">
+                <span class="glass-tag">Node.js</span><span class="glass-tag">Express.js</span><span class="glass-tag">MySQL</span><span class="glass-tag">Docker</span>
+              </div>
+              <!-- <div class="project-links">
+                <a href="https://github.com/sahilpatani1012" target="_blank" rel="noopener noreferrer" class="btn-outline" data-magnetic>
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="margin-right:6px"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.44 9.8 8.21 11.39.6.11.79-.26.79-.58v-2.23c-3.34.73-4.04-1.42-4.04-1.42-.55-1.39-1.33-1.76-1.33-1.76-1.09-.74.08-.73.08-.73 1.2.08 1.84 1.24 1.84 1.24 1.07 1.83 2.81 1.3 3.49 1 .11-.78.42-1.3.76-1.6-2.67-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.12-.3-.54-1.52.12-3.18 0 0 1.01-.32 3.3 1.23a11.5 11.5 0 0 1 6.01 0c2.29-1.55 3.3-1.23 3.3-1.23.66 1.65.24 2.87.12 3.18.77.84 1.24 1.91 1.24 3.22 0 4.61-2.81 5.63-5.48 5.92.43.37.82 1.1.82 2.22v3.29c0 .32.19.69.8.58C20.57 21.8 24 17.3 24 12c0-6.63-5.37-12-12-12z"/></svg>
+                  Source Code
+                </a>
+              </div> -->
+            </div>
+          </div>
+        </div>
+        <!-- Project 3 -->
+        <div class="project-card" data-project="3">
+          <div class="project-card-inner glass-card-gradient">
+            <div class="project-image-wrap">
+              <div class="project-image" style="background: linear-gradient(135deg, #1a0533 0%, #2d1b69 50%, #1a1a4e 100%); width:100%; height:100%;"></div>
+              <div class="project-image-overlay"></div>
+              <div class="project-curtain"></div>
+            </div>
+            <div class="project-info">
+              <div class="project-counter"><span class="counter-current">03</span> / 04</div>
+              <h3 class="project-title">Enterprise LMS Platform</h3>
+              <p class="project-description">Backend APIs powering 200k+ active users at Thriving Springs. Redis caching, async notification pipelines, bulk CSV ingestion, and RBAC-aware queries for clients including Uber and HDFC Ergo.</p>
+              <div class="project-tags">
+                <span class="glass-tag">Node.js</span><span class="glass-tag">FastAPI</span><span class="glass-tag">MongoDB</span><span class="glass-tag">Redis</span><span class="glass-tag">AWS</span>
+              </div>
+              <div class="project-links">
+                <span class="btn-outline" style="opacity:0.5; cursor:default;">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="margin-right:6px"><path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1s3.1 1.39 3.1 3.1v2z"/></svg>
+                  Enterprise
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Project 4 -->
+        <div class="project-card" data-project="4">
+          <div class="project-card-inner glass-card-gradient">
+            <div class="project-image-wrap">
+              <div class="project-image" style="background: linear-gradient(135deg, #0d0d1a 0%, #1a0a2e 50%, #2d1b4e 100%); width:100%; height:100%;"></div>
+              <div class="project-image-overlay"></div>
+              <div class="project-curtain"></div>
+            </div>
+            <div class="project-info">
+              <div class="project-counter"><span class="counter-current">04</span> / 04</div>
+              <h3 class="project-title">Interactive Portfolio</h3>
+              <p class="project-description">This very website — Three.js particle backgrounds, GSAP scroll-driven animations, glassmorphism UI, custom cursor, Lenis smooth scrolling, and Anime.js micro-interactions.</p>
+              <div class="project-tags">
+                <span class="glass-tag">Vite</span><span class="glass-tag">Three.js</span><span class="glass-tag">GSAP</span><span class="glass-tag">Anime.js</span>
+              </div>
+              <!-- <div class="project-links">
+                <a href="https://github.com/sahilpatani1012" target="_blank" rel="noopener noreferrer" class="btn-outline" data-magnetic>
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="margin-right:6px"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.44 9.8 8.21 11.39.6.11.79-.26.79-.58v-2.23c-3.34.73-4.04-1.42-4.04-1.42-.55-1.39-1.33-1.76-1.33-1.76-1.09-.74.08-.73.08-.73 1.2.08 1.84 1.24 1.84 1.24 1.07 1.83 2.81 1.3 3.49 1 .11-.78.42-1.3.76-1.6-2.67-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.12-.3-.54-1.52.12-3.18 0 0 1.01-.32 3.3 1.23a11.5 11.5 0 0 1 6.01 0c2.29-1.55 3.3-1.23 3.3-1.23.66 1.65.24 2.87.12 3.18.77.84 1.24 1.91 1.24 3.22 0 4.61-2.81 5.63-5.48 5.92.43.37.82 1.1.82 2.22v3.29c0 .32.19.69.8.58C20.57 21.8 24 17.3 24 12c0-6.63-5.37-12-12-12z"/></svg>
+                  Source Code
+                </a>
+              </div> -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- EXPERIENCE -->
+    <section class="section bg-secondary" id="experience" aria-label="Experience">
+      <div class="container">
+        <h2 class="section-heading" data-animate="heading">
+          <span class="heading-number">04.</span> Experience
+        </h2>
+        <div class="timeline" id="timeline">
+          <div class="timeline-line" aria-hidden="true">
+            <svg class="timeline-line-svg" preserveAspectRatio="none">
+              <line class="timeline-line-path" x1="50%" y1="0" x2="50%" y2="100%" />
+            </svg>
+          </div>
+          <!-- Entry 1 -->
+          <div class="timeline-entry" data-animate="timeline">
+            <div class="timeline-card glass-card">
+              <h3 class="timeline-role">Software Engineer</h3>
+              <div class="timeline-company">Thriving Springs</div>
+              <div class="timeline-date">February 2024 — Present · Hyderabad</div>
+              <ul class="timeline-desc">
+                <li>Reduced database redundancy by 25% and improved query latency by 15% through MongoDB schema redesign</li>
+                <li>Designed backend APIs for LMS/OJT workflows serving 200k+ active users under concurrent access</li>
+                <li>Improved task completion rates by ~30% via async cron-based notification pipelines</li>
+                <li>Technical POC for enterprise clients: Uber, HDFC Ergo, InCred</li>
+                <li>Built bulk CSV ingestion, Redis caching, containerized microservices on AWS</li>
+              </ul>
+              <div class="timeline-tags">
+                <span class="glass-tag">Node.js</span><span class="glass-tag">FastAPI</span><span class="glass-tag">MongoDB</span><span class="glass-tag">Redis</span><span class="glass-tag">Docker</span><span class="glass-tag">AWS</span>
+              </div>
+            </div>
+            <div class="timeline-dot-wrap"><div class="timeline-dot"></div></div>
+            <div class="timeline-spacer"></div>
+          </div>
+          <!-- Entry 2 -->
+          <div class="timeline-entry" data-animate="timeline">
+            <div class="timeline-spacer"></div>
+            <div class="timeline-dot-wrap"><div class="timeline-dot"></div></div>
+            <div class="timeline-card glass-card">
+              <h3 class="timeline-role">B.Tech in Information Technology</h3>
+              <div class="timeline-company">Manipal University Jaipur</div>
+              <div class="timeline-date">October 2020 — July 2024 · Jaipur</div>
+              <ul class="timeline-desc">
+                <li>CGPA: 8.9 / 10.0</li>
+                <li>Dean's List Award (2023) for academic excellence</li>
+                <li>CCNA Certified (Cisco Networking Academy)</li>
+                <li>Solved 300+ DSA problems on LeetCode</li>
+              </ul>
+              <div class="timeline-tags">
+                <span class="glass-tag">DSA</span><span class="glass-tag">System Design</span><span class="glass-tag">CCNA</span><span class="glass-tag">OOP</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section class="section" id="contact" aria-label="Contact">
+      <div class="container">
+        <h2 class="section-heading" data-animate="heading">
+          <span class="heading-number">05.</span> Get In Touch
+        </h2>
+        <div class="grid-two-col">
+          <div>
+            <h3 class="h2" id="contact-heading" style="margin-bottom: var(--space-lg);">Let's Work<br />Together</h3>
+            <p class="body-text-lg" style="margin-bottom: var(--space-2xl); max-width: 450px;">Got a project in mind? I'm currently open to new opportunities and interesting collaborations. Let's build something amazing.</p>
+            <a href="mailto:spatani9@gmail.com" class="contact-email-link" data-magnetic id="email-link">spatani9@gmail.com</a>
+            <div class="social-links">
+              <a href="https://github.com/sahilpatani1012" target="_blank" rel="noopener noreferrer" class="social-link" data-magnetic aria-label="GitHub">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.44 9.8 8.21 11.39.6.11.79-.26.79-.58v-2.23c-3.34.73-4.04-1.42-4.04-1.42-.55-1.39-1.33-1.76-1.33-1.76-1.09-.74.08-.73.08-.73 1.2.08 1.84 1.24 1.84 1.24 1.07 1.83 2.81 1.3 3.49 1 .11-.78.42-1.3.76-1.6-2.67-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.12-.3-.54-1.52.12-3.18 0 0 1.01-.32 3.3 1.23a11.5 11.5 0 0 1 6.01 0c2.29-1.55 3.3-1.23 3.3-1.23.66 1.65.24 2.87.12 3.18.77.84 1.24 1.91 1.24 3.22 0 4.61-2.81 5.63-5.48 5.92.43.37.82 1.1.82 2.22v3.29c0 .32.19.69.8.58C20.57 21.8 24 17.3 24 12c0-6.63-5.37-12-12-12z"/></svg>
+              </a>
+              <a href="https://www.linkedin.com/in/sahil-patani-2721231b8/" target="_blank" rel="noopener noreferrer" class="social-link" data-magnetic aria-label="LinkedIn">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+              </a>
+              <a href="https://leetcode.com/u/spatani9/" target="_blank" rel="noopener noreferrer" class="social-link" data-magnetic aria-label="LeetCode">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M13.483 0a1.374 1.374 0 0 0-.961.438L7.116 6.226l-3.854 4.126a5.266 5.266 0 0 0-1.209 2.104 5.35 5.35 0 0 0-.125.513 5.527 5.527 0 0 0 .062 2.362 5.83 5.83 0 0 0 .349 1.017 5.938 5.938 0 0 0 1.271 1.818l4.277 4.193.039.038c2.248 2.165 5.852 2.133 8.063-.074l2.396-2.392c.54-.54.54-1.414.003-1.955a1.378 1.378 0 0 0-1.951-.003l-2.396 2.392a3.021 3.021 0 0 1-4.205.038l-.02-.019-4.276-4.193c-.652-.64-.972-1.469-.948-2.263a2.68 2.68 0 0 1 .066-.523 2.545 2.545 0 0 1 .619-1.164L9.13 8.114c1.058-1.134 3.204-1.27 4.43-.278l3.501 2.831c.593.48 1.461.387 1.94-.207a1.384 1.384 0 0 0-.207-1.943l-3.5-2.831c-.8-.647-1.766-1.045-2.774-1.202l2.015-2.158A1.384 1.384 0 0 0 13.483 0zm-2.866 12.815a1.38 1.38 0 0 0-1.38 1.382 1.38 1.38 0 0 0 1.38 1.382H20.79a1.38 1.38 0 0 0 1.38-1.382 1.38 1.38 0 0 0-1.38-1.382z"/></svg>
+              </a>
+            </div>
+          </div>
+          <div>
+            <form class="contact-form" id="contact-form" name="contact" data-netlify="true" method="POST">
+              <input type="hidden" name="form-name" value="contact" />
+              <div class="form-group">
+                <input type="text" name="name" class="glass-input" placeholder=" " required autocomplete="name" />
+                <label>Your Name</label>
+                <span class="input-line"></span>
+              </div>
+              <div class="form-group">
+                <input type="email" name="email" class="glass-input" placeholder=" " required autocomplete="email" />
+                <label>Your Email</label>
+                <span class="input-line"></span>
+              </div>
+              <div class="form-group">
+                <textarea name="message" class="glass-input" rows="5" placeholder=" " required></textarea>
+                <label>Your Message</label>
+                <span class="input-line"></span>
+              </div>
+              <button type="submit" class="btn-primary" data-magnetic style="align-self:flex-start;">
+                Send Message
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-left:8px"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer" id="footer" aria-label="Footer">
+    <div class="footer-large-text" id="footer-large-text" aria-hidden="true">SAHIL</div>
+    <div class="container footer-content">
+      <p class="footer-copy">Designed & Built by Sahil Patani &copy; 2026</p>
+      <button class="back-to-top" id="back-to-top" aria-label="Back to top">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"/></svg>
+        Back to Top
+      </button>
+    </div>
+  </footer>
+
+  <!-- Toast -->
+  <div class="toast" id="toast" role="status" aria-live="polite">Email copied to clipboard!</div>
+</body>
+</html>

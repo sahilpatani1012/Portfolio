@@ -1,0 +1,206 @@
+/* ═══════════════════════════════════════════════════════════
+   GLASSMORPHISM UTILITY SYSTEM
+   ═══════════════════════════════════════════════════════════ */
+
+/* ─── Base Glass Card ─── */
+.glass-card {
+  background: var(--glass-bg);
+  backdrop-filter: blur(var(--glass-blur));
+  -webkit-backdrop-filter: blur(var(--glass-blur));
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--glass-shadow);
+  transition:
+    background var(--transition-base),
+    border-color var(--transition-base),
+    box-shadow var(--transition-base),
+    transform var(--transition-base);
+}
+
+.glass-card:hover {
+  background: var(--glass-bg-hover);
+  border-color: var(--glass-border-hover);
+  box-shadow: var(--glass-shadow-hover);
+}
+
+/* ─── Glass card with gradient overlay ─── */
+.glass-card-gradient {
+  background:
+    linear-gradient(
+      135deg,
+      rgba(var(--accent-primary-rgb), 0.08),
+      transparent 60%
+    ),
+    var(--glass-bg);
+  backdrop-filter: blur(var(--glass-blur));
+  -webkit-backdrop-filter: blur(var(--glass-blur));
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--glass-shadow);
+}
+
+/* ─── Glass Navigation ─── */
+.glass-nav {
+  background: transparent;
+  backdrop-filter: blur(0px);
+  -webkit-backdrop-filter: blur(0px);
+  border-bottom: 1px solid transparent;
+  transition:
+    background var(--transition-base),
+    backdrop-filter var(--transition-base),
+    border-color var(--transition-base);
+}
+
+.glass-nav.scrolled {
+  background: var(--glass-bg);
+  backdrop-filter: blur(var(--glass-blur));
+  -webkit-backdrop-filter: blur(var(--glass-blur));
+  border-bottom-color: var(--glass-border);
+}
+
+/* ─── Glass Button ─── */
+.glass-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-xs);
+  padding: var(--space-sm) var(--space-xl);
+  background: var(--glass-bg);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-full);
+  font-family: 'Inter', sans-serif;
+  font-size: var(--fs-small);
+  font-weight: 500;
+  color: var(--text-primary);
+  transition:
+    background var(--transition-base),
+    border-color var(--transition-base),
+    transform var(--transition-fast);
+  position: relative;
+  overflow: hidden;
+}
+
+.glass-button:hover {
+  background: var(--glass-bg-hover);
+  border-color: var(--glass-border-hover);
+}
+
+.glass-button::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    circle at var(--ripple-x, 50%) var(--ripple-y, 50%),
+    rgba(var(--accent-primary-rgb), 0.3),
+    transparent 60%
+  );
+  opacity: 0;
+  transition: opacity var(--transition-base);
+  pointer-events: none;
+}
+
+/* ─── Primary Button (filled) ─── */
+.btn-primary {
+  padding: var(--space-sm) var(--space-2xl);
+  background: linear-gradient(135deg, var(--accent-primary), #8b7aff);
+  border: none;
+  border-radius: var(--radius-full);
+  font-family: 'Inter', sans-serif;
+  font-size: var(--fs-small);
+  font-weight: 600;
+  color: #ffffff;
+  letter-spacing: 0.02em;
+  position: relative;
+  overflow: hidden;
+  transition: transform var(--transition-fast), box-shadow var(--transition-base);
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 30px rgba(var(--accent-primary-rgb), 0.4);
+}
+
+/* ─── Outline Button ─── */
+.btn-outline {
+  padding: var(--space-sm) var(--space-2xl);
+  background: transparent;
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-full);
+  font-family: 'Inter', sans-serif;
+  font-size: var(--fs-small);
+  font-weight: 500;
+  color: var(--text-primary);
+  transition:
+    background var(--transition-base),
+    border-color var(--transition-base),
+    transform var(--transition-fast);
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-outline:hover {
+  background: var(--glass-bg);
+  border-color: var(--accent-primary);
+  transform: translateY(-2px);
+}
+
+/* ─── Glass Input ─── */
+.glass-input {
+  width: 100%;
+  padding: var(--space-md) var(--space-lg);
+  background: var(--glass-bg);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-md);
+  color: var(--text-primary);
+  font-size: var(--fs-body);
+  transition:
+    border-color var(--transition-base),
+    box-shadow var(--transition-base);
+}
+
+.glass-input:focus {
+  outline: none;
+  border-color: var(--accent-primary);
+  box-shadow: 0 0 0 3px rgba(var(--accent-primary-rgb), 0.15);
+}
+
+.glass-input::placeholder {
+  color: var(--text-tertiary);
+}
+
+/* ─── Glass Tag / Pill ─── */
+.glass-tag {
+  display: inline-flex;
+  align-items: center;
+  padding: var(--space-xxs) var(--space-sm);
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-full);
+  font-family: 'JetBrains Mono', monospace;
+  font-size: var(--fs-tag);
+  color: var(--accent-secondary);
+  white-space: nowrap;
+}
+
+/* ─── Fallback for no backdrop-filter support ─── */
+@supports not (backdrop-filter: blur(1px)) {
+  .glass-card,
+  .glass-card-gradient,
+  .glass-nav.scrolled,
+  .glass-button,
+  .glass-input {
+    background: rgba(18, 18, 26, 0.95);
+  }
+
+  [data-theme="light"] .glass-card,
+  [data-theme="light"] .glass-card-gradient,
+  [data-theme="light"] .glass-nav.scrolled,
+  [data-theme="light"] .glass-button,
+  [data-theme="light"] .glass-input {
+    background: rgba(255, 255, 255, 0.9);
+  }
+}
