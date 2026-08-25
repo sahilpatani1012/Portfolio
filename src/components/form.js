@@ -67,7 +67,7 @@ export function initForm() {
 
       form.reset();
       toast('Message delivered — I usually reply same day');
-      if (label) label.textContent = 'Delivered ✓';
+      if (label) label.textContent = 'Delivered';
       setTimeout(() => { if (label) label.textContent = original; }, 3200);
     } catch {
       // Netlify's handler only exists on the deployed site, so local dev

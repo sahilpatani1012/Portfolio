@@ -4,8 +4,11 @@
 
 import { $, copy, toast, reduced, wait } from '../utils/helpers.js';
 import { scrollTo } from '../animations/gsapSetup.js';
+import { openIncident } from './incidents.js';
 
-const HINTS = ['help', 'whoami', 'stack', 'incidents', 'email', 'resume', 'uptime'];
+const RESUME = '/resume.pdf';
+
+const HINTS = ['help', 'whoami', 'stack', 'incidents', 'resume', 'email', 'uptime'];
 
 const LINKS = {
   github:   'https://github.com/sahilpatani1012',
@@ -98,26 +101,26 @@ export function initTerminal() {
     incidents: {
       desc: 'summary of resolved incidents',
       run: () => print([
-        'INC-001  <span class="err">SEV-1</span>  webhook race → double charge   22 cases / 3 gateways',
+        'INC-001  <span class="err">SEV-1</span>  webhook race – double charge   22 cases / 3 gateways',
         'INC-002  <span class="err">SEV-1</span>  cancellation billed twice       deferred ledger',
         'INC-003  SEV-2  40% of AI calls never fired     atomic reservation',
         'INC-004  SEV-2  95 sessions marked unattended   timeline reconcile',
         '',
         '<span class="ok">all resolved · 0 open · 0 regressions</span>',
-        '<span class="dimmed">run `open incidents` for the full reports</span>',
+        '<span class="dimmed">run <span class="hot">open inc-001</span> (…002/003/004) for a full report</span>',
       ]),
     },
 
     experience: {
       desc: 'work history',
       run: () => print([
-        'v2.0.0  CodeYoung · Bangalore            mar 2026 → present',
+        'v2.0.0  CodeYoung · Bangalore            mar 2026 – present',
         '        CRM migration lead · Loop scheduling · billing across 3 gateways',
         '',
-        'v1.0.0  Thriving Springs · Hyderabad     feb 2024 → feb 2026',
+        'v1.0.0  Thriving Springs · Hyderabad     feb 2024 – feb 2026',
         '        LMS backend for 200k+ users · enterprise POC (Uber, HDFC Ergo, InCred)',
         '',
-        'v0.1.0  Manipal University Jaipur        oct 2020 → jul 2024',
+        'v0.1.0  Manipal University Jaipur        oct 2020 – jul 2024',
         '        B.Tech Information Technology · CGPA 8.9 · 300+ LeetCode',
       ]),
     },
@@ -162,13 +165,20 @@ export function initTerminal() {
     leetcode: { desc: 'open leetcode profile', run: () => go('leetcode') },
 
     resume: {
-      desc: 'where to get the CV',
-      run: () => print([
-        'The full CV is a PDF — ask and it lands in your inbox the same day.',
-        '',
-        `  <a href="mailto:spatani9@gmail.com?subject=Resume%20request">spatani9@gmail.com</a>`,
-        `  <a href="${LINKS.linkedin}" target="_blank" rel="noopener noreferrer">linkedin.com/in/sahil-patani</a>`,
-      ]),
+      desc: 'download the CV as PDF',
+      run: async () => {
+        const a = document.createElement('a');
+        a.href = RESUME;
+        a.download = 'Sahil-Patani-Backend-Engineer.pdf';
+        document.body.appendChild(a);
+        a.click();
+        a.remove();
+        toast('Downloading CV');
+        return print([
+          'Sahil-Patani-Backend-Engineer.pdf   <span class="ok">[downloading]</span>',
+          `<span class="dimmed">1 page · if the download was blocked: <a href="${RESUME}" target="_blank" rel="noopener">open it directly</a></span>`,
+        ]);
+      },
     },
 
     contact: {
@@ -212,10 +222,14 @@ export function initTerminal() {
 
     // `open <section>` scrolls the page
     if (name === 'open' && rest[0]) {
-      const id = `#${rest[0].replace(/^#/, '')}`;
-      if (document.querySelector(id)) {
-        await print([`scrolling to ${id} …`], 'ok');
-        scrollTo(id);
+      const bare = rest[0].replace(/^#/, '');
+      if (/^inc-\d{3}$/.test(bare) && openIncident(bare)) {
+        await print([`opening ${bare.toUpperCase()} …`], 'ok');
+        return;
+      }
+      if (document.querySelector(`#${bare}`)) {
+        await print([`scrolling to #${bare} …`], 'ok');
+        scrollTo(`#${bare}`);
       } else {
         await print([`open: no such section: ${escapeHtml(rest[0])}`], 'err');
       }

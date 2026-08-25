@@ -26,8 +26,10 @@
   <link rel="canonical" href="https://tangerine-shortbread-60bb60.netlify.app" />
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <!-- Fonts are self-hosted; preload only the faces above the fold. -->
+  <link rel="preload" href="/fonts/instrumentserif-400.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="preload" href="/fonts/plexmono-400.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="preload" href="/fonts/plexmono-500.woff2" as="font" type="font/woff2" crossorigin />
 
   <script type="application/ld+json">
   {
@@ -93,6 +95,13 @@
 
     <span class="bar-spacer"></span>
 
+    <button class="bar-k" id="pal-open" aria-label="Open command palette" data-cur="SEARCH">
+      <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="5.2" cy="5.2" r="3.4"/><path d="M7.8 7.8 10.5 10.5"/></svg>
+      <span class="lbl">Search</span>
+      <kbd id="pal-kbd">⌘K</kbd>
+    </button>
+
+    <span class="bar-div bar-hide-sm"></span>
     <span class="bar-seg bar-hide-sm">local <b id="bar-clock">--:--:--</b></span>
     <span class="bar-div bar-hide-sm"></span>
     <span class="bar-status"><span class="dot ok"></span> Available</span>
@@ -160,13 +169,17 @@
                 <svg class="arrow" width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 6h8M6.5 2.5 10 6l-3.5 3.5"/></svg>
               </a>
               <a href="#connect" class="btn" data-cur="CONNECT"><span>Open Channel</span></a>
+              <a href="/resume.pdf" download="Sahil-Patani-Backend-Engineer.pdf" class="btn" data-cur="DOWNLOAD">
+                <span>Download CV</span>
+                <svg class="arrow" width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 1.5v7M3.5 6 6 8.5 8.5 6M2 10.5h8"/></svg>
+              </a>
             </div>
           </div>
 
           <div class="panel ticked stream" data-fade>
             <div class="panel-bar">
               <span class="dot ok pulse"></span>
-              <span class="sys">ingress · live</span>
+              <span class="sys">ingress · replay</span>
               <span class="spacer"></span>
               <span class="sys" id="stream-rate">0 rps</span>
             </div>
@@ -277,7 +290,7 @@
         </div>
 
         <div class="mesh-shell">
-          <div class="mesh-scroll">
+          <div class="mesh-scroll" data-lenis-prevent-horizontal>
             <div class="mesh" id="mesh">
               <svg class="mesh-wires" id="mesh-wires" aria-hidden="true"></svg>
 
@@ -367,7 +380,7 @@
         </div>
 
         <!-- D1 · LOOP -->
-        <article class="dep">
+        <article class="dep" id="dep-01">
           <div class="dep-head">
             <span class="idx">D-01</span>
             <span class="nm">loop &mdash; scheduling engine</span>
@@ -401,7 +414,7 @@
         </article>
 
         <!-- D2 · CRM MIGRATION -->
-        <article class="dep">
+        <article class="dep" id="dep-02">
           <div class="dep-head">
             <span class="idx">D-02</span>
             <span class="nm">crm migration &mdash; dual-write cutover</span>
@@ -435,7 +448,7 @@
         </article>
 
         <!-- D3 · BILLING -->
-        <article class="dep">
+        <article class="dep" id="dep-03">
           <div class="dep-head">
             <span class="idx">D-03</span>
             <span class="nm">billing mesh &mdash; 3 gateways</span>
@@ -469,7 +482,7 @@
         </article>
 
         <!-- D4 · LMS -->
-        <article class="dep">
+        <article class="dep" id="dep-04">
           <div class="dep-head">
             <span class="idx">D-04</span>
             <span class="nm">lms platform &mdash; 200k+ users</span>
@@ -503,13 +516,13 @@
         </article>
 
         <!-- D5 · KANBAN -->
-        <article class="dep">
+        <article class="dep" id="dep-05">
           <div class="dep-head">
             <span class="idx">D-05</span>
             <span class="nm">realtime kanban</span>
             <span class="org">personal</span>
             <span class="push"></span>
-            <span class="pill">Open source</span>
+            <span class="pill">Personal</span>
           </div>
           <div class="dep-body">
             <div class="dep-info">
@@ -594,7 +607,7 @@
         </p>
 
         <!-- INC 1 -->
-        <div class="inc" data-inc>
+        <div class="inc" data-inc id="inc-001">
           <button class="inc-head" aria-expanded="false">
             <span class="inc-id">INC-001</span>
             <span class="pill sev1">Sev-1</span>
@@ -628,11 +641,14 @@
                 <p>Reserve&#8209;then&#8209;write on the ledger with an idempotency key derived from the provider event id, making the handler replay&#8209;safe. Reconciled the historical cases across all three gateways.</p>
               </div>
             </div>
+            <div class="inc-perma">
+              <button type="button" class="inc-link" data-permalink="inc-001" data-cur="COPY">Copy link to INC-001</button>
+            </div>
           </div></div></div>
         </div>
 
         <!-- INC 2 -->
-        <div class="inc" data-inc>
+        <div class="inc" data-inc id="inc-002">
           <button class="inc-head" aria-expanded="false">
             <span class="inc-id">INC-002</span>
             <span class="pill sev1">Sev-1</span>
@@ -665,11 +681,14 @@
                 <p>Replayed historical cancellation sequences against staging with live&#8209;shaped data; covered the settlement boundary with Jest suites so the regression cannot return silently.</p>
               </div>
             </div>
+            <div class="inc-perma">
+              <button type="button" class="inc-link" data-permalink="inc-002" data-cur="COPY">Copy link to INC-002</button>
+            </div>
           </div></div></div>
         </div>
 
         <!-- INC 3 -->
-        <div class="inc" data-inc>
+        <div class="inc" data-inc id="inc-003">
           <button class="inc-head" aria-expanded="false">
             <span class="inc-id">INC-003</span>
             <span class="pill sev2">Sev-2</span>
@@ -703,11 +722,14 @@
                 <p>Every reminder now writes an audit record, so &ldquo;did this fire?&rdquo; is a query rather than an assumption. The failure mode is observable by construction.</p>
               </div>
             </div>
+            <div class="inc-perma">
+              <button type="button" class="inc-link" data-permalink="inc-003" data-cur="COPY">Copy link to INC-003</button>
+            </div>
           </div></div></div>
         </div>
 
         <!-- INC 4 -->
-        <div class="inc" data-inc>
+        <div class="inc" data-inc id="inc-004">
           <button class="inc-head" aria-expanded="false">
             <span class="inc-id">INC-004</span>
             <span class="pill sev2">Sev-2</span>
@@ -740,6 +762,9 @@
                 <p>Any system deriving state from one webhook is one ordering assumption away from being wrong. Event order is a guarantee you have to build, not one you receive.</p>
               </div>
             </div>
+            <div class="inc-perma">
+              <button type="button" class="inc-link" data-permalink="inc-004" data-cur="COPY">Copy link to INC-004</button>
+            </div>
           </div></div></div>
         </div>
       </div>
@@ -759,13 +784,13 @@
             <span class="log-ver">v2.0.0 &mdash; current</span>
             <h3 class="log-role">Software Engineer</h3>
             <span class="log-org">CodeYoung &middot; Bangalore</span>
-            <span class="log-when">March 2026 &rarr; present</span>
+            <span class="log-when">March 2026 &ndash; present</span>
             <div class="tag-row mt-3">
               <span class="tag">Node.js</span><span class="tag">TypeScript</span><span class="tag">AWS SQS</span><span class="tag">Stripe</span><span class="tag">PayPal</span><span class="tag">Sequelize</span><span class="tag">Jest</span>
             </div>
           </div>
           <div class="log-lines">
-            <div class="log-line"><span class="op">+</span><span>Lead a <b>zero-downtime CRM migration</b> (Cratio &rarr; Arali) across two backend services, designing a config-driven adapter layer enabling dual-write, phased cutover and instant rollback without a deploy &mdash; <span class="code">135k+</span> operations synced across <span class="code">9</span> flows.</span></div>
+            <div class="log-line"><span class="op">+</span><span>Lead a <b>zero-downtime CRM migration</b> (Cratio &ndash; Arali) across two backend services, designing a config-driven adapter layer enabling dual-write, phased cutover and instant rollback without a deploy &mdash; <span class="code">135k+</span> operations synced across <span class="code">9</span> flows.</span></div>
             <div class="log-line"><span class="op">+</span><span>Own student-reschedule and mentor-substitution flows in <b>Loop</b>, an SQS-backed scheduling engine processing <span class="code">13k+</span> requests/month; shipped a deferred cancellation ledger that eliminated a double-charge defect.</span></div>
             <div class="log-line"><span class="op mod">~</span><span>Re-architected the admin scheduling-requests API from per-mentor rows to <b>request-level grouping</b> &mdash; faceted counts, server-driven search, filtering, pagination and a mentor-eligibility endpoint. Validated against live staging data, covered by Jest suites.</span></div>
             <div class="log-line"><span class="op mod">~</span><span>Rebuilt the demo reminder pipeline (AI voice calls, WhatsApp, email) as a scheduled-task system with <b>atomic call reservation</b> and dedup windows &mdash; eliminating duplicate outreach across <span class="code">35k+</span> reminders/month and making every reminder auditable.</span></div>
@@ -780,7 +805,7 @@
             <span class="log-ver">v1.0.0</span>
             <h3 class="log-role">Software Engineer</h3>
             <span class="log-org">Thriving Springs &middot; Hyderabad</span>
-            <span class="log-when">February 2024 &rarr; February 2026</span>
+            <span class="log-when">February 2024 &ndash; February 2026</span>
             <div class="tag-row mt-3">
               <span class="tag">Node.js</span><span class="tag">FastAPI</span><span class="tag">MongoDB</span><span class="tag">Redis</span><span class="tag">Angular</span><span class="tag">Docker</span><span class="tag">Kubernetes</span><span class="tag">AWS</span>
             </div>
@@ -801,7 +826,7 @@
             <span class="log-ver">v0.1.0</span>
             <h3 class="log-role">B.Tech, Information Technology</h3>
             <span class="log-org">Manipal University Jaipur</span>
-            <span class="log-when">October 2020 &rarr; July 2024</span>
+            <span class="log-when">October 2020 &ndash; July 2024</span>
             <div class="tag-row mt-3">
               <span class="tag">DSA</span><span class="tag">System Design</span><span class="tag">OOP</span><span class="tag">Networks</span>
             </div>
@@ -820,7 +845,7 @@
         <div class="sec-head">
           <span class="sec-id">07</span>
           <span class="sec-title">Connect</span>
-          <span class="sec-note">type <code style="color:var(--signal)">help</code> in the console</span>
+          <span class="sec-note">type <code style="color:var(--signal)">help</code> or <code style="color:var(--signal)">resume</code></span>
         </div>
 
         <div class="g g-split-r">
@@ -832,7 +857,7 @@
                 <span class="spacer"></span>
                 <span class="sys" style="color:var(--faint)">interactive</span>
               </div>
-              <div class="term-out" id="term-out" role="log" aria-live="polite" aria-label="Console output"></div>
+              <div class="term-out" id="term-out" role="log" aria-live="polite" aria-label="Console output" data-lenis-prevent></div>
               <label class="term-in" for="term-input">
                 <span class="p">&rsaquo;</span>
                 <input id="term-input" type="text" autocomplete="off" autocapitalize="off" spellcheck="false"
@@ -872,6 +897,11 @@
                 <span class="chan-k">LeetCode</span>
                 <span class="chan-v">spatani9 &middot; 300+ solved</span>
                 <span class="chan-go"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3.5 8.5 8.5 3.5M4.5 3.5h4v4"/></svg></span>
+              </a>
+              <a class="chan-row" href="/resume.pdf" download="Sahil-Patani-Backend-Engineer.pdf" data-cur="DOWNLOAD">
+                <span class="chan-k">Résumé</span>
+                <span class="chan-v">Sahil-Patani-Backend-Engineer.pdf &middot; 1 page</span>
+                <span class="chan-go"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 1.5v7M3.5 6 6 8.5 8.5 6M2 10.5h8"/></svg></span>
               </a>
               <div class="chan-row" style="cursor:default">
                 <span class="chan-k">Location</span>
@@ -923,6 +953,27 @@
       <a href="#status" data-cur="TOP">Back to top &uarr;</a>
     </div>
   </footer>
+  </div>
+
+  <!-- ═══════════ COMMAND PALETTE ═══════════ -->
+  <div class="pal-back" id="pal-back" aria-hidden="true"></div>
+  <div class="pal" id="pal" role="dialog" aria-modal="true" aria-label="Command palette" aria-hidden="true">
+    <div class="pal-in">
+      <span class="p" aria-hidden="true">&rsaquo;</span>
+      <input id="pal-input" type="text" role="combobox" aria-expanded="true" aria-controls="pal-list"
+             aria-autocomplete="list" autocomplete="off" autocapitalize="off" spellcheck="false"
+             aria-label="Search commands" placeholder="Search sections, deployments, incidents…" />
+      <span class="pal-esc" aria-hidden="true">esc</span>
+    </div>
+    <div class="pal-list" id="pal-list" role="listbox" aria-label="Commands" data-lenis-prevent></div>
+    <div class="pal-foot" aria-hidden="true">
+      <span><span style="color:var(--mute)">↑↓</span> navigate</span>
+      <span class="sep">/</span>
+      <span><span style="color:var(--mute)">enter</span> open</span>
+      <span class="sep hide-xs">/</span>
+      <span class="hide-xs"><span style="color:var(--mute)">esc</span> close</span>
+      <span class="n" id="pal-count"></span>
+    </div>
   </div>
 
   <div class="toast" id="toast" role="status" aria-live="polite"><span class="dot ok"></span><span id="toast-msg">Copied</span></div>

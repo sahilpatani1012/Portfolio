@@ -10,6 +10,7 @@ html {
   -moz-osx-font-smoothing: grayscale;
   scroll-behavior: auto;
   background: var(--void);
+  scrollbar-gutter: stable;
 }
 
 body {

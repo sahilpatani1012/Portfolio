@@ -2,9 +2,11 @@
    THE CONSOLE — stylesheet entry
    ═══════════════════════════════════════════════════════════ */
 
+@import './_fonts.css';
 @import './_tokens.css';
 @import './_reset.css';
 @import './_type.css';
 @import './_console.css';
 @import './_layout.css';
 @import './_sections.css';
+@import './_palette.css';

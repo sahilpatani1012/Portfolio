@@ -12,6 +12,7 @@ import { initBoot } from './components/boot.js';
 import { initCursor } from './components/cursor.js';
 import { initRail, initClock } from './components/rail.js';
 import { initTerminal } from './components/terminal.js';
+import { initPalette } from './components/palette.js';
 import { initIncidents, initCopy } from './components/incidents.js';
 import { initForm } from './components/form.js';
 
@@ -45,6 +46,7 @@ async function boot() {
   initCopy();
   initTerminal();
   initForm();
+  initPalette();
 
   // Late layout settle: fonts, diagrams and expanded rows all shift heights.
   document.fonts?.ready.then(() => ScrollTrigger.refresh());
