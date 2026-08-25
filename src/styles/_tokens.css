@@ -1,0 +1,104 @@
+/* ═══════════════════════════════════════════════════════════
+   THE CONSOLE — Design Tokens
+   Near-black instrument panel. One signal colour. Hairlines.
+   ═══════════════════════════════════════════════════════════ */
+
+:root {
+  /* ─── Surfaces ─────────────────────────────────────────── */
+  --void:       #08090B;
+  --surface:    #0D0F12;
+  --surface-2:  #12151A;
+  --surface-3:  #191D23;
+
+  /* ─── Hairlines ────────────────────────────────────────── */
+  --line:       #1C2027;
+  --line-2:     #262B33;
+  --line-hot:   #333A44;
+
+  /* ─── Type colours ─────────────────────────────────────── */
+  --text:       #E7E9EC;
+  --dim:        #8B929C;
+  --mute:       #5A616B;
+  --faint:      #383E47;
+
+  /* ─── Signal (the ONE accent — live values, active state) ─ */
+  --signal:      #D4FF3F;
+  --signal-rgb:  212, 255, 63;
+  --signal-wash: rgba(212, 255, 63, 0.10);
+  --signal-edge: rgba(212, 255, 63, 0.30);
+
+  /* ─── Status (semantic only — never decorative) ────────── */
+  --ok:    #3FCF8E;
+  --warn:  #FFB020;
+  --crit:  #FF5A52;
+  --info:  #5B9DFF;
+  --ok-rgb:   63, 207, 142;
+  --warn-rgb: 255, 176, 32;
+  --crit-rgb: 255, 90, 82;
+
+  /* ─── Typefaces ────────────────────────────────────────── */
+  --mono:  'IBM Plex Mono', ui-monospace, 'SF Mono', Menlo, monospace;
+  --serif: 'Instrument Serif', 'Times New Roman', Georgia, serif;
+  --sans:  'Inter Tight', Inter, system-ui, -apple-system, sans-serif;
+
+  /* ─── Type scale ───────────────────────────────────────── */
+  --t-mega:  clamp(3.5rem, 11vw, 11rem);
+  --t-xl:    clamp(2.25rem, 5.5vw, 5rem);
+  --t-lg:    clamp(1.6rem, 3vw, 2.75rem);
+  --t-md:    clamp(1.15rem, 1.7vw, 1.5rem);
+  --t-body:  clamp(0.9375rem, 1vw, 1.0625rem);
+  --t-sm:    0.8125rem;
+  --t-xs:    0.6875rem;
+  --t-micro: 0.625rem;
+
+  /* ─── Mono tracking (console chrome reads wide) ────────── */
+  --track-wide:  0.14em;
+  --track-mid:   0.08em;
+  --track-tight: -0.01em;
+
+  /* ─── Spacing (4px base) ───────────────────────────────── */
+  --s-1:  0.25rem;
+  --s-2:  0.5rem;
+  --s-3:  0.75rem;
+  --s-4:  1rem;
+  --s-5:  1.5rem;
+  --s-6:  2rem;
+  --s-7:  3rem;
+  --s-8:  4rem;
+  --s-9:  6rem;
+  --s-10: 8rem;
+  --s-11: 12rem;
+
+  /* ─── Geometry — sharp. No pills, no 16px radii. ───────── */
+  --r-0: 0px;
+  --r-1: 2px;
+  --r-2: 3px;
+
+  /* ─── Motion ───────────────────────────────────────────── */
+  --e-out:  cubic-bezier(0.16, 1, 0.3, 1);
+  --e-in:   cubic-bezier(0.7, 0, 0.84, 0);
+  --e-mech: cubic-bezier(0.2, 0, 0, 1);
+  --d-fast: 0.16s;
+  --d-base: 0.28s;
+  --d-slow: 0.6s;
+
+  /* ─── Layers ───────────────────────────────────────────── */
+  --z-bg:      -1;
+  --z-base:     0;
+  --z-raised:  10;
+  --z-rail:   400;
+  --z-bar:    500;
+  --z-sheet:  700;
+  --z-boot:   900;
+  --z-cursor: 1000;
+
+  /* ─── Layout ───────────────────────────────────────────── */
+  --bar-h:      44px;
+  --rail-w:     52px;
+  --max:        1440px;
+  --gutter:     clamp(1.25rem, 3.5vw, 3.5rem);
+  --sec-pad:    clamp(5rem, 11vw, 11rem);
+}
+
+/* Firefox has no backdrop-filter perf concerns here — we barely use it.
+   The console is opaque by design; depth comes from hairlines, not blur. */

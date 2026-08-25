@@ -1,83 +1,103 @@
 /* ═══════════════════════════════════════════════════════════
-   HELPERS — Utility functions
+   HELPERS
    ═══════════════════════════════════════════════════════════ */
 
-/** Linear interpolation */
-export function lerp(start, end, factor) {
-  return start + (end - start) * factor;
-}
+export const $  = (sel, root = document) => root.querySelector(sel);
+export const $$ = (sel, root = document) => Array.from(root.querySelectorAll(sel));
 
-/** Clamp value between min and max */
-export function clamp(value, min, max) {
-  return Math.min(Math.max(value, min), max);
-}
+export const reduced = () =>
+  window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-/** Map value from one range to another */
-export function mapRange(value, inMin, inMax, outMin, outMax) {
-  return ((value - inMin) * (outMax - outMin)) / (inMax - inMin) + outMin;
-}
+export const coarse = () =>
+  window.matchMedia('(pointer: coarse)').matches || window.innerWidth < 900;
 
-/** Debounce function calls */
-export function debounce(fn, delay = 100) {
-  let timer;
+export const clamp = (n, min, max) => Math.min(Math.max(n, min), max);
+export const lerp  = (a, b, t) => a + (b - a) * t;
+export const rand  = (min, max) => Math.random() * (max - min) + min;
+export const randInt = (min, max) => Math.floor(rand(min, max + 1));
+export const pick  = (arr) => arr[Math.floor(Math.random() * arr.length)];
+
+/** 13412 -> "13,412" */
+export const commas = (n) => n.toLocaleString('en-US');
+
+/** Two-digit pad */
+export const pad = (n, len = 2) => String(n).padStart(len, '0');
+
+export const wait = (ms) => new Promise((r) => setTimeout(r, ms));
+
+/** rAF-throttled wrapper */
+export function throttleRAF(fn) {
+  let queued = false;
+  let lastArgs;
   return (...args) => {
-    clearTimeout(timer);
-    timer = setTimeout(() => fn(...args), delay);
+    lastArgs = args;
+    if (queued) return;
+    queued = true;
+    requestAnimationFrame(() => {
+      queued = false;
+      fn(...lastArgs);
+    });
   };
 }
 
-/** Throttle function calls */
-export function throttle(fn, limit = 16) {
-  let lastCall = 0;
-  return (...args) => {
-    const now = Date.now();
-    if (now - lastCall >= limit) {
-      lastCall = now;
-      fn(...args);
+/** Fires cb once when el first enters the viewport. */
+export function onceVisible(el, cb, rootMargin = '0px 0px -12% 0px') {
+  if (!('IntersectionObserver' in window)) { cb(); return () => {}; }
+  const io = new IntersectionObserver((entries) => {
+    for (const e of entries) {
+      if (e.isIntersecting) { cb(e.target); io.unobserve(e.target); }
     }
+  }, { rootMargin, threshold: 0.15 });
+  io.observe(el);
+  return () => io.disconnect();
+}
+
+/** Deterministic pseudo-random from a string seed — stable sparklines per key. */
+export function seeded(seed) {
+  let h = 2166136261;
+  for (let i = 0; i < seed.length; i++) {
+    h ^= seed.charCodeAt(i);
+    h = Math.imul(h, 16777619);
+  }
+  return () => {
+    h += 0x6d2b79f5;
+    let t = h;
+    t = Math.imul(t ^ (t >>> 15), t | 1);
+    t ^= t + Math.imul(t ^ (t >>> 7), t | 61);
+    return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
   };
 }
 
-/** Check if prefers-reduced-motion is enabled */
-export function prefersReducedMotion() {
-  return window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+/** Toast — returns immediately, hides itself. */
+let toastTimer;
+export function toast(msg) {
+  const el = document.getElementById('toast');
+  const txt = document.getElementById('toast-msg');
+  if (!el || !txt) return;
+  txt.textContent = msg;
+  el.classList.add('up');
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(() => el.classList.remove('up'), 2200);
 }
 
-/** Check if device has fine pointer (mouse) */
-export function hasFineCursor() {
-  return window.matchMedia('(pointer: fine)').matches;
-}
-
-/** Check if mobile viewport */
-export function isMobile() {
-  return window.innerWidth <= 768;
-}
-
-/** Get element's center coordinates */
-export function getCenter(el) {
-  const rect = el.getBoundingClientRect();
-  return {
-    x: rect.left + rect.width / 2,
-    y: rect.top + rect.height / 2,
-  };
-}
-
-/** Random float between min and max */
-export function randomFloat(min, max) {
-  return Math.random() * (max - min) + min;
-}
-
-/** Random integer between min and max (inclusive) */
-export function randomInt(min, max) {
-  return Math.floor(Math.random() * (max - min + 1)) + min;
-}
-
-/** Select single element */
-export function $(selector, parent = document) {
-  return parent.querySelector(selector);
-}
-
-/** Select all elements */
-export function $$(selector, parent = document) {
-  return [...parent.querySelectorAll(selector)];
+/** Clipboard with a graceful fallback for non-secure contexts. */
+export async function copy(text) {
+  try {
+    await navigator.clipboard.writeText(text);
+    return true;
+  } catch {
+    try {
+      const ta = document.createElement('textarea');
+      ta.value = text;
+      ta.setAttribute('readonly', '');
+      ta.style.cssText = 'position:fixed;top:-1000px;opacity:0';
+      document.body.appendChild(ta);
+      ta.select();
+      const ok = document.execCommand('copy');
+      ta.remove();
+      return ok;
+    } catch {
+      return false;
+    }
+  }
 }

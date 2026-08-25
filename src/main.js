@@ -1,62 +1,65 @@
 /* ═══════════════════════════════════════════════════════════
-   MAIN ENTRY POINT — Portfolio initialization
+   THE CONSOLE — entry point
+   sahil-patani · backend engineer · bangalore
    ═══════════════════════════════════════════════════════════ */
 
-// Styles
 import './styles/main.css';
 
-// Core setup
-import { initSmoothScroll } from './animations/gsapSetup.js';
-import { initPreloader } from './animations/preloader.js';
-import { initHeroAnimations } from './animations/heroAnimations.js';
-import { initScrollAnimations } from './animations/scrollAnimations.js';
-import { initHoverEffects } from './animations/hoverEffects.js';
-import { initAnimeEffects } from './animations/animeEffects.js';
+import { initSmoothScroll, stopScroll, startScroll, ScrollTrigger } from './animations/gsapSetup.js';
+import { initReveal } from './animations/reveal.js';
 
-// Three.js
-import { initParticleScene } from './three/particleScene.js';
-
-// Components
+import { initBoot } from './components/boot.js';
 import { initCursor } from './components/cursor.js';
-import { initNavigation } from './components/navigation.js';
-import { initContactForm } from './components/contactForm.js';
-import { initThemeToggle } from './components/themeToggle.js';
+import { initRail, initClock } from './components/rail.js';
+import { initTerminal } from './components/terminal.js';
+import { initIncidents, initCopy } from './components/incidents.js';
+import { initForm } from './components/form.js';
 
-// Utilities
-import { initMagneticElements } from './utils/magneticElement.js';
+import { initFlow } from './systems/flow.js';
+import { initCounters, initSparklines, initStream } from './systems/telemetry.js';
+import { initMesh } from './systems/mesh.js';
+import { initTrace } from './systems/trace.js';
 
-/* ─── Boot Sequence ─── */
 async function boot() {
-  // Theme toggle can init immediately (before preloader)
-  initThemeToggle();
-
-  // Smooth scroll setup
+  // Chrome that should exist before and during the boot screen.
+  initClock();
   initSmoothScroll();
+  stopScroll();
 
-  // Wait for preloader to complete
-  await initPreloader();
+  // Structural work that must be done before first reveal — building the
+  // mesh wires and trace diagrams needs stable layout, not a visible page.
+  initFlow();
+  initSparklines();
+  initStream();
 
-  // Initialize everything after preloader
-  initHeroAnimations();
-  initParticleScene();
+  await initBoot();
+  startScroll();
+
   initCursor();
-  initNavigation();
-  initScrollAnimations();
-  initHoverEffects();
-  initAnimeEffects();
-  initContactForm();
-  initMagneticElements();
+  initRail();
+  initReveal();
+  initCounters();
+  initMesh();
+  initTrace();
+  initIncidents();
+  initCopy();
+  initTerminal();
+  initForm();
 
-  // Log boot complete
+  // Late layout settle: fonts, diagrams and expanded rows all shift heights.
+  document.fonts?.ready.then(() => ScrollTrigger.refresh());
+  window.addEventListener('load', () => ScrollTrigger.refresh(), { once: true });
+
   console.log(
-    '%c★ Portfolio loaded successfully',
-    'color: #6c63ff; font-size: 14px; font-weight: bold;'
+    '%c sahil-patani %c ready · ap-south-1 ',
+    'background:#D4FF3F;color:#08090B;font-weight:700;padding:2px 6px;border-radius:2px 0 0 2px',
+    'background:#12151A;color:#8B929C;padding:2px 6px;border-radius:0 2px 2px 0'
   );
+  console.log('%cLooking for the source? github.com/sahilpatani1012', 'color:#5A616B');
 }
 
-// Start when DOM is ready
 if (document.readyState === 'loading') {
-  document.addEventListener('DOMContentLoaded', boot);
+  document.addEventListener('DOMContentLoaded', boot, { once: true });
 } else {
   boot();
 }

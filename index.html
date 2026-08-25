@@ -1,480 +1,908 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="dark">
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Sahil Patani — Software Engineer</title>
-  <meta name="description" content="Portfolio of Sahil Patani — Software Engineer with 2+ years of experience building scalable, production-grade web systems. Based in Hyderabad, India." />
+  <meta name="color-scheme" content="dark" />
+  <meta name="theme-color" content="#08090B" />
+
+  <title>Sahil Patani — Backend Engineer</title>
+  <meta name="description" content="Backend engineer in Bangalore. 2.5 years building and operating production systems: payment integrations across Stripe, PayPal and an in-house gateway, a zero-downtime CRM migration, and an SQS-backed scheduling engine handling 13k+ requests a month." />
   <meta name="author" content="Sahil Patani" />
 
-  <!-- Open Graph -->
-  <meta property="og:type" content="website" />
-  <meta property="og:title" content="Sahil Patani — Software Engineer" />
-  <meta property="og:description" content="Building performant, scalable web experiences. 2+ years of backend-heavy, production-grade systems." />
-  <meta property="og:url" content="https://sahilpatani.dev" />
-  <meta property="og:image" content="/images/og-image.png" />
+  <meta property="og:type" content="profile" />
+  <meta property="og:title" content="Sahil Patani — Backend Engineer" />
+  <meta property="og:description" content="I build and operate the systems that move money, schedule people, and stay up. Payments, scheduling, and production root-cause analysis." />
+  <meta property="og:url" content="https://tangerine-shortbread-60bb60.netlify.app" />
+  <meta property="og:image" content="https://tangerine-shortbread-60bb60.netlify.app/og-image.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
 
-  <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Sahil Patani — Software Engineer" />
-  <meta name="twitter:description" content="Building performant, scalable web experiences." />
-  <meta name="twitter:image" content="/images/og-image.png" />
+  <meta name="twitter:title" content="Sahil Patani — Backend Engineer" />
+  <meta name="twitter:description" content="I build and operate the systems that move money, schedule people, and stay up." />
+  <meta name="twitter:image" content="https://tangerine-shortbread-60bb60.netlify.app/og-image.png" />
 
-  <link rel="canonical" href="https://sahilpatani.dev" />
+  <link rel="canonical" href="https://tangerine-shortbread-60bb60.netlify.app" />
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 
-  <!-- Font preconnect -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 
-  <!-- JSON-LD -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "Person",
     "name": "Sahil Patani",
-    "url": "https://sahilpatani.dev",
+    "url": "https://tangerine-shortbread-60bb60.netlify.app",
     "email": "spatani9@gmail.com",
-    "jobTitle": "Software Engineer",
-    "worksFor": { "@type": "Organization", "name": "Thriving Springs" },
-    "address": { "@type": "PostalAddress", "addressLocality": "Hyderabad", "addressCountry": "IN" },
+    "telephone": "+91-9309550866",
+    "jobTitle": "Backend Engineer",
+    "worksFor": { "@type": "Organization", "name": "CodeYoung" },
+    "alumniOf": { "@type": "CollegeOrUniversity", "name": "Manipal University Jaipur" },
+    "address": { "@type": "PostalAddress", "addressLocality": "Bangalore", "addressCountry": "IN" },
+    "knowsAbout": ["Backend Engineering", "Distributed Systems", "Payment Systems", "API Design", "Database Design", "Production Incident Analysis"],
     "sameAs": [
       "https://github.com/sahilpatani1012",
-      "https://www.linkedin.com/in/sahil-patani-2721231b8/"
+      "https://www.linkedin.com/in/sahil-patani-2721231b8/",
+      "https://leetcode.com/u/spatani9/"
     ]
   }
   </script>
 
+  <script>document.documentElement.classList.add('js');</script>
   <script type="module" src="/src/main.js"></script>
 </head>
 <body>
-  <!-- Skip to content -->
-  <a href="#main-content" class="skip-to-content">Skip to content</a>
+  <a href="#main" class="skip">Skip to content</a>
 
-  <!-- ═══════════ PRELOADER ═══════════ -->
-  <div class="preloader" id="preloader" aria-hidden="true">
-    <div class="preloader-content">
-      <div class="preloader-name" id="preloader-name">SAHIL PATANI</div>
-      <div class="preloader-counter" id="preloader-counter">0</div>
-    </div>
-    <div class="preloader-bar">
-      <div class="preloader-bar-fill" id="preloader-bar"></div>
-    </div>
-    <div class="preloader-top" id="preloader-top"></div>
-    <div class="preloader-bottom" id="preloader-bottom"></div>
+  <!-- ═══════════ BOOT ═══════════ -->
+  <div class="boot" id="boot" aria-hidden="true">
+    <div class="boot-brand">sahil-patani &nbsp;·&nbsp; init</div>
+    <div class="boot-log" id="boot-log"></div>
+    <div class="boot-meter"><i id="boot-meter"></i></div>
   </div>
 
-  <!-- ═══════════ CUSTOM CURSOR ═══════════ -->
-  <div class="cursor-outer" id="cursor-outer" aria-hidden="true"></div>
-  <div class="cursor-inner" id="cursor-inner" aria-hidden="true"></div>
+  <!-- ═══════════ CURSOR ═══════════ -->
+  <div class="cur-ring" id="cur-ring" aria-hidden="true"></div>
+  <div class="cur" id="cur" aria-hidden="true">
+    <span class="cur-cross"></span>
+    <span class="cur-tag" id="cur-tag"></span>
+  </div>
 
-  <!-- ═══════════ NAVIGATION ═══════════ -->
-  <nav class="nav glass-nav" id="navbar" role="navigation" aria-label="Main navigation">
-    <div class="nav-inner">
-      <a href="#hero" class="nav-logo" data-magnetic>
-        <span class="logo-text">SP</span>
+  <!-- ═══════════ BACKDROP ═══════════ -->
+  <div class="grid-bg" aria-hidden="true"></div>
+  <div class="backdrop" aria-hidden="true"><canvas id="flow"></canvas></div>
+  <div class="grain" aria-hidden="true"></div>
+
+  <!-- ═══════════ STATUS BAR ═══════════ -->
+  <header class="bar" role="banner">
+    <a href="#status" class="bar-id" data-cur="TOP">
+      <span class="dot ok pulse"></span>
+      <span class="code">sahil-patani</span>
+    </a>
+
+    <span class="bar-div bar-hide-sm"></span>
+    <span class="bar-seg bar-hide-sm">v<b>2.5.0</b></span>
+
+    <span class="bar-div bar-hide-md"></span>
+    <span class="bar-seg bar-hide-md">region <b>ap-south-1</b></span>
+
+    <span class="bar-div bar-hide-md"></span>
+    <span class="bar-seg bar-hide-md">node <b>blr</b></span>
+
+    <span class="bar-spacer"></span>
+
+    <span class="bar-seg bar-hide-sm">local <b id="bar-clock">--:--:--</b></span>
+    <span class="bar-div bar-hide-sm"></span>
+    <span class="bar-status"><span class="dot ok"></span> Available</span>
+  </header>
+
+  <!-- ═══════════ RAIL ═══════════ -->
+  <nav class="rail" id="rail" aria-label="Sections">
+    <a href="#status"      class="rail-link on" data-rail><span>01</span><span class="lbl">Status</span></a>
+    <a href="#readme"      class="rail-link"    data-rail><span>02</span><span class="lbl">Readme</span></a>
+    <a href="#stack"       class="rail-link"    data-rail><span>03</span><span class="lbl">Stack</span></a>
+    <a href="#deployments" class="rail-link"    data-rail><span>04</span><span class="lbl">Deployments</span></a>
+    <a href="#incidents"   class="rail-link"    data-rail><span>05</span><span class="lbl">Incidents</span></a>
+    <a href="#changelog"   class="rail-link"    data-rail><span>06</span><span class="lbl">Changelog</span></a>
+    <a href="#connect"     class="rail-link"    data-rail><span>07</span><span class="lbl">Connect</span></a>
+
+    <div class="rail-foot">
+      <a class="rail-ico" href="https://github.com/sahilpatani1012" target="_blank" rel="noopener noreferrer" aria-label="GitHub" data-cur="GITHUB">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.44 9.8 8.21 11.39.6.11.79-.26.79-.58v-2.23c-3.34.73-4.04-1.42-4.04-1.42-.55-1.39-1.33-1.76-1.33-1.76-1.09-.74.08-.73.08-.73 1.2.08 1.84 1.24 1.84 1.24 1.07 1.83 2.81 1.3 3.49 1 .11-.78.42-1.3.76-1.6-2.67-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.12-.3-.54-1.52.12-3.18 0 0 1.01-.32 3.3 1.23a11.5 11.5 0 0 1 6.01 0c2.29-1.55 3.3-1.23 3.3-1.23.66 1.65.24 2.87.12 3.18.77.84 1.24 1.91 1.24 3.22 0 4.61-2.81 5.63-5.48 5.92.43.37.82 1.1.82 2.22v3.29c0 .32.19.69.8.58C20.57 21.8 24 17.3 24 12c0-6.63-5.37-12-12-12z"/></svg>
       </a>
-      <div class="nav-links hide-mobile">
-        <a href="#hero" class="nav-link active" data-nav-link data-magnetic>Home</a>
-        <a href="#about" class="nav-link" data-nav-link data-magnetic>About</a>
-        <a href="#skills" class="nav-link" data-nav-link data-magnetic>Skills</a>
-        <a href="#projects" class="nav-link" data-nav-link data-magnetic>Projects</a>
-        <a href="#experience" class="nav-link" data-nav-link data-magnetic>Experience</a>
-        <a href="#contact" class="nav-link" data-nav-link data-magnetic>Contact</a>
-      </div>
-      <div class="nav-actions">
-        <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme" data-magnetic>
-          <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
-          </svg>
-          <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:none">
-            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
-          </svg>
-        </button>
-        <button class="hamburger hide-desktop" id="hamburger" aria-label="Open menu" aria-expanded="false">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
-            <path class="hamburger-top" d="M3 6h18"/>
-            <path class="hamburger-mid" d="M3 12h18"/>
-            <path class="hamburger-bot" d="M3 18h18"/>
-          </svg>
-        </button>
-      </div>
+      <a class="rail-ico" href="https://www.linkedin.com/in/sahil-patani-2721231b8/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" data-cur="LINKEDIN">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+      </a>
+      <a class="rail-ico" href="https://leetcode.com/u/spatani9/" target="_blank" rel="noopener noreferrer" aria-label="LeetCode" data-cur="LEETCODE">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M13.483 0a1.374 1.374 0 0 0-.961.438L7.116 6.226l-3.854 4.126a5.266 5.266 0 0 0-1.209 2.104 5.35 5.35 0 0 0-.125.513 5.527 5.527 0 0 0 .062 2.362 5.83 5.83 0 0 0 .349 1.017 5.938 5.938 0 0 0 1.271 1.818l4.277 4.193.039.038c2.248 2.165 5.852 2.133 8.063-.074l2.396-2.392c.54-.54.54-1.414.003-1.955a1.378 1.378 0 0 0-1.951-.003l-2.396 2.392a3.021 3.021 0 0 1-4.205.038l-.02-.019-4.276-4.193c-.652-.64-.972-1.469-.948-2.263a2.68 2.68 0 0 1 .066-.523 2.545 2.545 0 0 1 .619-1.164L9.13 8.114c1.058-1.134 3.204-1.27 4.43-.278l3.501 2.831c.593.48 1.461.387 1.94-.207a1.384 1.384 0 0 0-.207-1.943l-3.5-2.831c-.8-.647-1.766-1.045-2.774-1.202l2.015-2.158A1.384 1.384 0 0 0 13.483 0zm-2.866 12.815a1.38 1.38 0 0 0-1.38 1.382 1.38 1.38 0 0 0 1.38 1.382H20.79a1.38 1.38 0 0 0 1.38-1.382 1.38 1.38 0 0 0-1.38-1.382z"/></svg>
+      </a>
     </div>
   </nav>
 
-  <!-- Mobile Menu -->
-  <div class="mobile-menu" id="mobile-menu" role="dialog" aria-label="Mobile navigation">
-    <a href="#hero" class="mobile-link" data-mobile-link>Home</a>
-    <a href="#about" class="mobile-link" data-mobile-link>About</a>
-    <a href="#skills" class="mobile-link" data-mobile-link>Skills</a>
-    <a href="#projects" class="mobile-link" data-mobile-link>Projects</a>
-    <a href="#experience" class="mobile-link" data-mobile-link>Experience</a>
-    <a href="#contact" class="mobile-link" data-mobile-link>Contact</a>
-  </div>
+  <!-- ═══════════ MAIN ═══════════ -->
+  <div class="shell">
+  <main id="main">
 
-  <!-- ═══════════ THREE.JS CANVAS ═══════════ -->
-  <canvas class="hero-canvas" id="hero-canvas" aria-hidden="true"></canvas>
+    <!-- ─────────── 01 · STATUS ─────────── -->
+    <section class="sec hero" id="status" aria-label="Status">
+      <div class="wrap">
 
-  <!-- ═══════════ MAIN CONTENT ═══════════ -->
-  <main id="main-content">
-
-    <!-- HERO -->
-    <section class="hero section-fullscreen" id="hero" aria-label="Introduction">
-      <div class="container">
-        <div class="hero-content">
-          <p class="tagline hero-tagline" id="hero-tagline">SOFTWARE ENGINEER</p>
-          <h1 class="hero-heading hero-title" id="hero-title">Hi, I'm <span>Sahil</span></h1>
-          <p class="hero-subtitle" id="hero-subtitle">I build performant, scalable web systems that handle real-world complexity — from APIs serving 200k+ users to real-time collaboration platforms.</p>
-          <div class="hero-ctas" id="hero-ctas">
-            <a href="#projects" class="btn-primary" data-magnetic>View My Work</a>
-            <a href="#contact" class="btn-outline" data-magnetic>Get In Touch</a>
-          </div>
-        </div>
-      </div>
-      <div class="scroll-indicator" id="scroll-indicator">
-        <span class="scroll-indicator-text">Scroll to explore</span>
-        <svg class="scroll-indicator-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <polyline points="6 9 12 15 18 9"/>
-        </svg>
-      </div>
-    </section>
-
-    <!-- ABOUT -->
-    <section class="section bg-secondary" id="about" aria-label="About me">
-      <div class="container">
-        <h2 class="section-heading" data-animate="heading">
-          <span class="heading-number">01.</span> About Me
-        </h2>
-        <div class="grid-two-col">
-          <div class="about-text" id="about-text">
-            <p class="body-text-lg">A passionate software engineer based in Hyderabad with 2+ years of experience building and operating backend-heavy, production-grade web systems in a high-scale startup environment.</p>
-            <p class="body-text-lg" style="margin-top: var(--space-lg);">I specialize in API design, data modeling, and performance optimization — with hands-on experience improving latency, scalability, and system reliability for products serving hundreds of thousands of users.</p>
-            <p class="body-text-lg" style="margin-top: var(--space-lg);">My work at Thriving Springs involves enterprise clients like Uber, HDFC Ergo, and InCred — where I own features end-to-end, reason about trade-offs, and deliver measurable impact in distributed systems.</p>
-          </div>
-          <div class="about-visual" id="about-visual">
-            <div class="about-avatar glass-card"><span>SP</span></div>
-            <div class="stat-card glass-card" data-animate="stat">
-              <div class="stat-number" data-count="2">0</div>
-              <div class="stat-label">Years Experience</div>
-            </div>
-            <div class="stat-card glass-card" data-animate="stat">
-              <div class="stat-number" data-count="200" data-suffix="k+">0</div>
-              <div class="stat-label">Users Impacted</div>
-            </div>
-            <div class="stat-card glass-card" data-animate="stat">
-              <div class="stat-number" data-count="300" data-suffix="+">0</div>
-              <div class="stat-label">LeetCode Problems</div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- SKILLS -->
-    <section class="section" id="skills" aria-label="Technical skills">
-      <div class="container">
-        <h2 class="section-heading" data-animate="heading">
-          <span class="heading-number">02.</span> Tech Stack
-        </h2>
-        <div class="bento-grid" id="skills-grid">
-          <div class="skill-card glass-card bento-wide" data-animate="skill">
-            <span class="skill-category">Languages</span>
-            <div class="skill-icon"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 22 12 18.27 5.82 22 7 14.14l-5-4.87 6.91-1.01L12 2z"/></svg></div>
-            <span class="skill-name">Python · JavaScript · TypeScript · C++</span>
-          </div>
-          <div class="skill-card glass-card" data-animate="skill">
-            <span class="skill-category">Backend</span>
-            <div class="skill-icon"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 15v-4H7l5-7v4h4l-5 7z"/></svg></div>
-            <span class="skill-name">Node.js · Express.js</span>
-          </div>
-          <div class="skill-card glass-card" data-animate="skill">
-            <span class="skill-category">Backend</span>
-            <div class="skill-icon"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 6.627 5.37 12 12 12 6.626 0 12-5.373 12-12C24 5.373 18.626 0 12 0zm-.624 21.62v-7.528H7.19L13.2 2.38v7.528h4.03L11.376 21.62z"/></svg></div>
-            <span class="skill-name">FastAPI · REST APIs</span>
-          </div>
-          <div class="skill-card glass-card" data-animate="skill">
-            <span class="skill-category">Frontend</span>
-            <div class="skill-icon"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M14.23 12a2.23 2.23 0 1 1-4.46 0 2.23 2.23 0 0 1 4.46 0zm-2.23 8c-4.42 0-8-1.79-8-4s3.58-4 8-4 8 1.79 8 4-3.58 4-8 4zm0-16C7.58 4 4 5.79 4 8s3.58 4 8 4 8-1.79 8-4-3.58-4-8-4z"/></svg></div>
-            <span class="skill-name">React · Angular</span>
-          </div>
-          <div class="skill-card glass-card bento-wide" data-animate="skill">
-            <span class="skill-category">Database</span>
-            <div class="skill-icon"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 4.69 2 8v8c0 3.31 4.48 6 10 6s10-2.69 10-6V8c0-3.31-4.48-6-10-6zm0 2c4.42 0 8 1.79 8 4s-3.58 4-8 4-8-1.79-8-4 3.58-4 8-4z"/></svg></div>
-            <span class="skill-name">MongoDB · MySQL · PostgreSQL</span>
-          </div>
-          <div class="skill-card glass-card" data-animate="skill">
-            <span class="skill-category">Cache</span>
-            <div class="skill-icon"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg></div>
-            <span class="skill-name">Redis</span>
-          </div>
-          <div class="skill-card glass-card" data-animate="skill">
-            <span class="skill-category">Protocol</span>
-            <div class="skill-icon"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M1 9l2 2c4.97-4.97 13.03-4.97 18 0l2-2C16.93 2.93 7.08 2.93 1 9zm8 8l3 3 3-3a4.237 4.237 0 0 0-6 0zm-4-4l2 2a7.074 7.074 0 0 1 10 0l2-2C15.14 9.14 8.87 9.14 5 13z"/></svg></div>
-            <span class="skill-name">WebSockets</span>
-          </div>
-          <div class="skill-card glass-card" data-animate="skill">
-            <span class="skill-category">DevOps</span>
-            <div class="skill-icon"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M22.67 12.36c-.03-.15-.18-.28-.35-.28h-.55c-.09-.68-.29-1.32-.57-1.91l.47-.27c.15-.09.22-.27.17-.43a8.97 8.97 0 0 0-1.4-2.4c-.12-.14-.3-.17-.46-.1l-.48.28a6.87 6.87 0 0 0-1.56-1.56l.28-.48c.08-.16.05-.34-.1-.46a8.97 8.97 0 0 0-2.4-1.4c-.16-.06-.34.02-.43.17L15.02 5c-.59-.28-1.23-.48-1.91-.57v-.55c0-.17-.13-.32-.28-.35a9.1 9.1 0 0 0-2.78 0c-.15.03-.28.18-.28.35v.55c-.68.09-1.32.29-1.91.57l-.27-.47c-.09-.15-.27-.22-.43-.17a8.97 8.97 0 0 0-2.4 1.4c-.14.12-.17.3-.1.46l.28.48a6.87 6.87 0 0 0-1.56 1.56l-.48-.28c-.16-.08-.34-.04-.46.1a8.97 8.97 0 0 0-1.4 2.4c-.06.16.02.34.17.43l.47.27c-.28.59-.48 1.23-.57 1.91h-.55c-.17 0-.32.13-.35.28a9.1 9.1 0 0 0 0 2.78c.03.15.18.28.35.28h.55c.09.68.29 1.32.57 1.91l-.47.27c-.15.09-.22.27-.17.43a8.97 8.97 0 0 0 1.4 2.4c.12.14.3.17.46.1l.48-.28a6.87 6.87 0 0 0 1.56 1.56l-.28.48c-.08.16-.04.34.1.46a8.97 8.97 0 0 0 2.4 1.4c.16.06.34-.02.43-.17l.27-.47c.59.28 1.23.48 1.91.57v.55c0 .17.13.32.28.35a9.1 9.1 0 0 0 2.78 0c.15-.03.28-.18.28-.35v-.55c.68-.09 1.32-.29 1.91-.57l.27.47c.09.15.27.22.43.17a8.97 8.97 0 0 0 2.4-1.4c.14-.12.17-.3.1-.46l-.28-.48a6.87 6.87 0 0 0 1.56-1.56l.48.28c.16.08.34.04.46-.1a8.97 8.97 0 0 0 1.4-2.4c.06-.16-.02-.34-.17-.43l-.47-.27c.28-.59.48-1.23.57-1.91h.55c.17 0 .32-.13.35-.28a9.1 9.1 0 0 0 0-2.78zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8z"/></svg></div>
-            <span class="skill-name">Docker · Kubernetes</span>
-          </div>
-          <div class="skill-card glass-card bento-wide" data-animate="skill">
-            <span class="skill-category">Cloud & Infra</span>
-            <div class="skill-icon"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M19.35 10.04A7.49 7.49 0 0 0 12 4C9.11 4 6.6 5.64 5.35 8.04A5.994 5.994 0 0 0 0 14c0 3.31 2.69 6 6 6h13c2.76 0 5-2.24 5-5 0-2.64-2.05-4.78-4.65-4.96z"/></svg></div>
-            <span class="skill-name">AWS (EC2, S3, IAM, RDS) · Linux · Nginx · CI/CD</span>
-          </div>
-          <div class="skill-card glass-card" data-animate="skill">
-            <span class="skill-category">Architecture</span>
-            <div class="skill-icon"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M22 9V7h-2V5c0-1.1-.9-2-2-2H4c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2v-2h2v-2h-2v-2h2v-2h-2V9h2zm-4 10H4V5h14v14zM6 13h5v4H6zm6-6h4v3h-4zM6 7h5v5H6zm6 4h4v6h-4z"/></svg></div>
-            <span class="skill-name">Microservices · System Design</span>
-          </div>
-          <div class="skill-card glass-card" data-animate="skill">
-            <span class="skill-category">Tools</span>
-            <div class="skill-icon"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.44 9.8 8.21 11.39.6.11.79-.26.79-.58v-2.03c-3.34.73-4.04-1.61-4.04-1.61-.55-1.39-1.33-1.76-1.33-1.76-1.09-.74.08-.73.08-.73 1.2.08 1.84 1.24 1.84 1.24 1.07 1.83 2.81 1.3 3.49 1 .11-.78.42-1.3.76-1.6-2.67-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.12-.3-.54-1.52.12-3.18 0 0 1.01-.32 3.3 1.23a11.5 11.5 0 0 1 6.01 0c2.29-1.55 3.3-1.23 3.3-1.23.66 1.65.24 2.87.12 3.18.77.84 1.24 1.91 1.24 3.22 0 4.61-2.81 5.63-5.48 5.92.43.37.82 1.1.82 2.22v3.29c0 .32.19.69.8.58C20.57 21.8 24 17.3 24 12c0-6.63-5.37-12-12-12z"/></svg></div>
-            <span class="skill-name">Git</span>
-          </div>
+        <div class="hero-slug">
+          <span class="sys" style="color:var(--signal)">SVC/0x01</span>
+          <span class="rule"></span>
+          <span class="sys">Identity</span>
         </div>
 
-        <!-- Marquee -->
-        <div class="marquee-wrap" aria-hidden="true">
-          <div class="marquee-track" id="marquee-track">
-            <span class="marquee-item"><span class="dot"></span> Python</span>
-            <span class="marquee-item"><span class="dot"></span> JavaScript</span>
-            <span class="marquee-item"><span class="dot"></span> TypeScript</span>
-            <span class="marquee-item"><span class="dot"></span> Node.js</span>
-            <span class="marquee-item"><span class="dot"></span> React</span>
-            <span class="marquee-item"><span class="dot"></span> Angular</span>
-            <span class="marquee-item"><span class="dot"></span> FastAPI</span>
-            <span class="marquee-item"><span class="dot"></span> MongoDB</span>
-            <span class="marquee-item"><span class="dot"></span> PostgreSQL</span>
-            <span class="marquee-item"><span class="dot"></span> Redis</span>
-            <span class="marquee-item"><span class="dot"></span> Docker</span>
-            <span class="marquee-item"><span class="dot"></span> AWS</span>
-            <span class="marquee-item"><span class="dot"></span> Kubernetes</span>
-            <span class="marquee-item"><span class="dot"></span> Python</span>
-            <span class="marquee-item"><span class="dot"></span> JavaScript</span>
-            <span class="marquee-item"><span class="dot"></span> TypeScript</span>
-            <span class="marquee-item"><span class="dot"></span> Node.js</span>
-            <span class="marquee-item"><span class="dot"></span> React</span>
-            <span class="marquee-item"><span class="dot"></span> Angular</span>
-            <span class="marquee-item"><span class="dot"></span> FastAPI</span>
-            <span class="marquee-item"><span class="dot"></span> MongoDB</span>
-            <span class="marquee-item"><span class="dot"></span> PostgreSQL</span>
-            <span class="marquee-item"><span class="dot"></span> Redis</span>
-            <span class="marquee-item"><span class="dot"></span> Docker</span>
-            <span class="marquee-item"><span class="dot"></span> AWS</span>
-            <span class="marquee-item"><span class="dot"></span> Kubernetes</span>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- PROJECTS -->
-    <section class="section" id="projects" aria-label="Projects">
-      <div class="container">
-        <h2 class="section-heading" data-animate="heading">
-          <span class="heading-number">03.</span> Featured Projects
-        </h2>
-      </div>
-      <div class="projects-wrapper container" id="projects-wrapper">
-        <!-- Project 1 -->
-        <div class="project-card" data-project="1">
-          <div class="project-card-inner glass-card-gradient">
-            <div class="project-image-wrap">
-              <div class="project-image" style="background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%); width:100%; height:100%;"></div>
-              <div class="project-image-overlay"></div>
-              <div class="project-curtain"></div>
-            </div>
-            <div class="project-info">
-              <div class="project-counter"><span class="counter-current">01</span> / 04</div>
-              <h3 class="project-title">Real-Time Kanban Board</h3>
-              <p class="project-description">Live collaboration system using WebSockets, supporting 50+ concurrent users with sub-100ms event propagation. Features drag-and-drop sync, user presence, optimistic locking, and JWT auth.</p>
-              <div class="project-tags">
-                <span class="glass-tag">Node.js</span><span class="glass-tag">Socket.io</span><span class="glass-tag">MongoDB</span><span class="glass-tag">Angular</span><span class="glass-tag">Express.js</span>
-              </div>
-              <!-- <div class="project-links">
-                <a href="https://github.com/sahilpatani1012" target="_blank" rel="noopener noreferrer" class="btn-outline" data-magnetic>
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="margin-right:6px"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.44 9.8 8.21 11.39.6.11.79-.26.79-.58v-2.23c-3.34.73-4.04-1.42-4.04-1.42-.55-1.39-1.33-1.76-1.33-1.76-1.09-.74.08-.73.08-.73 1.2.08 1.84 1.24 1.84 1.24 1.07 1.83 2.81 1.3 3.49 1 .11-.78.42-1.3.76-1.6-2.67-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.12-.3-.54-1.52.12-3.18 0 0 1.01-.32 3.3 1.23a11.5 11.5 0 0 1 6.01 0c2.29-1.55 3.3-1.23 3.3-1.23.66 1.65.24 2.87.12 3.18.77.84 1.24 1.91 1.24 3.22 0 4.61-2.81 5.63-5.48 5.92.43.37.82 1.1.82 2.22v3.29c0 .32.19.69.8.58C20.57 21.8 24 17.3 24 12c0-6.63-5.37-12-12-12z"/></svg>
-                  Source Code
-                </a>
-              </div> -->
-            </div>
-          </div>
-        </div>
-        <!-- Project 2 -->
-        <div class="project-card" data-project="2">
-          <div class="project-card-inner glass-card-gradient">
-            <div class="project-image-wrap">
-              <div class="project-image" style="background: linear-gradient(135deg, #0f0c29 0%, #302b63 50%, #24243e 100%); width:100%; height:100%;"></div>
-              <div class="project-image-overlay"></div>
-              <div class="project-curtain"></div>
-            </div>
-            <div class="project-info">
-              <div class="project-counter"><span class="counter-current">02</span> / 04</div>
-              <h3 class="project-title">Teacher-Course Management</h3>
-              <p class="project-description">Containerized CRUD platform with normalized relational schemas, optimized joins, role-based access control, and robust validation. Dockerized for reproducible builds.</p>
-              <div class="project-tags">
-                <span class="glass-tag">Node.js</span><span class="glass-tag">Express.js</span><span class="glass-tag">MySQL</span><span class="glass-tag">Docker</span>
-              </div>
-              <!-- <div class="project-links">
-                <a href="https://github.com/sahilpatani1012" target="_blank" rel="noopener noreferrer" class="btn-outline" data-magnetic>
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="margin-right:6px"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.44 9.8 8.21 11.39.6.11.79-.26.79-.58v-2.23c-3.34.73-4.04-1.42-4.04-1.42-.55-1.39-1.33-1.76-1.33-1.76-1.09-.74.08-.73.08-.73 1.2.08 1.84 1.24 1.84 1.24 1.07 1.83 2.81 1.3 3.49 1 .11-.78.42-1.3.76-1.6-2.67-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.12-.3-.54-1.52.12-3.18 0 0 1.01-.32 3.3 1.23a11.5 11.5 0 0 1 6.01 0c2.29-1.55 3.3-1.23 3.3-1.23.66 1.65.24 2.87.12 3.18.77.84 1.24 1.91 1.24 3.22 0 4.61-2.81 5.63-5.48 5.92.43.37.82 1.1.82 2.22v3.29c0 .32.19.69.8.58C20.57 21.8 24 17.3 24 12c0-6.63-5.37-12-12-12z"/></svg>
-                  Source Code
-                </a>
-              </div> -->
-            </div>
-          </div>
-        </div>
-        <!-- Project 3 -->
-        <div class="project-card" data-project="3">
-          <div class="project-card-inner glass-card-gradient">
-            <div class="project-image-wrap">
-              <div class="project-image" style="background: linear-gradient(135deg, #1a0533 0%, #2d1b69 50%, #1a1a4e 100%); width:100%; height:100%;"></div>
-              <div class="project-image-overlay"></div>
-              <div class="project-curtain"></div>
-            </div>
-            <div class="project-info">
-              <div class="project-counter"><span class="counter-current">03</span> / 04</div>
-              <h3 class="project-title">Enterprise LMS Platform</h3>
-              <p class="project-description">Backend APIs powering 200k+ active users at Thriving Springs. Redis caching, async notification pipelines, bulk CSV ingestion, and RBAC-aware queries for clients including Uber and HDFC Ergo.</p>
-              <div class="project-tags">
-                <span class="glass-tag">Node.js</span><span class="glass-tag">FastAPI</span><span class="glass-tag">MongoDB</span><span class="glass-tag">Redis</span><span class="glass-tag">AWS</span>
-              </div>
-              <div class="project-links">
-                <span class="btn-outline" style="opacity:0.5; cursor:default;">
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="margin-right:6px"><path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1s3.1 1.39 3.1 3.1v2z"/></svg>
-                  Enterprise
-                </span>
-              </div>
-            </div>
-          </div>
-        </div>
-        <!-- Project 4 -->
-        <div class="project-card" data-project="4">
-          <div class="project-card-inner glass-card-gradient">
-            <div class="project-image-wrap">
-              <div class="project-image" style="background: linear-gradient(135deg, #0d0d1a 0%, #1a0a2e 50%, #2d1b4e 100%); width:100%; height:100%;"></div>
-              <div class="project-image-overlay"></div>
-              <div class="project-curtain"></div>
-            </div>
-            <div class="project-info">
-              <div class="project-counter"><span class="counter-current">04</span> / 04</div>
-              <h3 class="project-title">Interactive Portfolio</h3>
-              <p class="project-description">This very website — Three.js particle backgrounds, GSAP scroll-driven animations, glassmorphism UI, custom cursor, Lenis smooth scrolling, and Anime.js micro-interactions.</p>
-              <div class="project-tags">
-                <span class="glass-tag">Vite</span><span class="glass-tag">Three.js</span><span class="glass-tag">GSAP</span><span class="glass-tag">Anime.js</span>
-              </div>
-              <!-- <div class="project-links">
-                <a href="https://github.com/sahilpatani1012" target="_blank" rel="noopener noreferrer" class="btn-outline" data-magnetic>
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="margin-right:6px"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.44 9.8 8.21 11.39.6.11.79-.26.79-.58v-2.23c-3.34.73-4.04-1.42-4.04-1.42-.55-1.39-1.33-1.76-1.33-1.76-1.09-.74.08-.73.08-.73 1.2.08 1.84 1.24 1.84 1.24 1.07 1.83 2.81 1.3 3.49 1 .11-.78.42-1.3.76-1.6-2.67-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.12-.3-.54-1.52.12-3.18 0 0 1.01-.32 3.3 1.23a11.5 11.5 0 0 1 6.01 0c2.29-1.55 3.3-1.23 3.3-1.23.66 1.65.24 2.87.12 3.18.77.84 1.24 1.91 1.24 3.22 0 4.61-2.81 5.63-5.48 5.92.43.37.82 1.1.82 2.22v3.29c0 .32.19.69.8.58C20.57 21.8 24 17.3 24 12c0-6.63-5.37-12-12-12z"/></svg>
-                  Source Code
-                </a>
-              </div> -->
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- EXPERIENCE -->
-    <section class="section bg-secondary" id="experience" aria-label="Experience">
-      <div class="container">
-        <h2 class="section-heading" data-animate="heading">
-          <span class="heading-number">04.</span> Experience
-        </h2>
-        <div class="timeline" id="timeline">
-          <div class="timeline-line" aria-hidden="true">
-            <svg class="timeline-line-svg" preserveAspectRatio="none">
-              <line class="timeline-line-path" x1="50%" y1="0" x2="50%" y2="100%" />
-            </svg>
-          </div>
-          <!-- Entry 1 -->
-          <div class="timeline-entry" data-animate="timeline">
-            <div class="timeline-card glass-card">
-              <h3 class="timeline-role">Software Engineer</h3>
-              <div class="timeline-company">Thriving Springs</div>
-              <div class="timeline-date">February 2024 — Present · Hyderabad</div>
-              <ul class="timeline-desc">
-                <li>Reduced database redundancy by 25% and improved query latency by 15% through MongoDB schema redesign</li>
-                <li>Designed backend APIs for LMS/OJT workflows serving 200k+ active users under concurrent access</li>
-                <li>Improved task completion rates by ~30% via async cron-based notification pipelines</li>
-                <li>Technical POC for enterprise clients: Uber, HDFC Ergo, InCred</li>
-                <li>Built bulk CSV ingestion, Redis caching, containerized microservices on AWS</li>
-              </ul>
-              <div class="timeline-tags">
-                <span class="glass-tag">Node.js</span><span class="glass-tag">FastAPI</span><span class="glass-tag">MongoDB</span><span class="glass-tag">Redis</span><span class="glass-tag">Docker</span><span class="glass-tag">AWS</span>
-              </div>
-            </div>
-            <div class="timeline-dot-wrap"><div class="timeline-dot"></div></div>
-            <div class="timeline-spacer"></div>
-          </div>
-          <!-- Entry 2 -->
-          <div class="timeline-entry" data-animate="timeline">
-            <div class="timeline-spacer"></div>
-            <div class="timeline-dot-wrap"><div class="timeline-dot"></div></div>
-            <div class="timeline-card glass-card">
-              <h3 class="timeline-role">B.Tech in Information Technology</h3>
-              <div class="timeline-company">Manipal University Jaipur</div>
-              <div class="timeline-date">October 2020 — July 2024 · Jaipur</div>
-              <ul class="timeline-desc">
-                <li>CGPA: 8.9 / 10.0</li>
-                <li>Dean's List Award (2023) for academic excellence</li>
-                <li>CCNA Certified (Cisco Networking Academy)</li>
-                <li>Solved 300+ DSA problems on LeetCode</li>
-              </ul>
-              <div class="timeline-tags">
-                <span class="glass-tag">DSA</span><span class="glass-tag">System Design</span><span class="glass-tag">CCNA</span><span class="glass-tag">OOP</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- CONTACT -->
-    <section class="section" id="contact" aria-label="Contact">
-      <div class="container">
-        <h2 class="section-heading" data-animate="heading">
-          <span class="heading-number">05.</span> Get In Touch
-        </h2>
-        <div class="grid-two-col">
+        <div class="hero-top">
           <div>
-            <h3 class="h2" id="contact-heading" style="margin-bottom: var(--space-lg);">Let's Work<br />Together</h3>
-            <p class="body-text-lg" style="margin-bottom: var(--space-2xl); max-width: 450px;">Got a project in mind? I'm currently open to new opportunities and interesting collaborations. Let's build something amazing.</p>
-            <a href="mailto:spatani9@gmail.com" class="contact-email-link" data-magnetic id="email-link">spatani9@gmail.com</a>
-            <div class="social-links">
-              <a href="https://github.com/sahilpatani1012" target="_blank" rel="noopener noreferrer" class="social-link" data-magnetic aria-label="GitHub">
-                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.44 9.8 8.21 11.39.6.11.79-.26.79-.58v-2.23c-3.34.73-4.04-1.42-4.04-1.42-.55-1.39-1.33-1.76-1.33-1.76-1.09-.74.08-.73.08-.73 1.2.08 1.84 1.24 1.84 1.24 1.07 1.83 2.81 1.3 3.49 1 .11-.78.42-1.3.76-1.6-2.67-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.12-.3-.54-1.52.12-3.18 0 0 1.01-.32 3.3 1.23a11.5 11.5 0 0 1 6.01 0c2.29-1.55 3.3-1.23 3.3-1.23.66 1.65.24 2.87.12 3.18.77.84 1.24 1.91 1.24 3.22 0 4.61-2.81 5.63-5.48 5.92.43.37.82 1.1.82 2.22v3.29c0 .32.19.69.8.58C20.57 21.8 24 17.3 24 12c0-6.63-5.37-12-12-12z"/></svg>
+            <h1 class="hero-name">
+              <span class="ln" data-mask><span>Sahil</span></span>
+              <span class="ln" data-mask><span><em>Patani</em></span></span>
+            </h1>
+
+            <div class="hero-meta" data-rise>
+              <span>Backend Engineer</span>
+              <span class="sep">/</span>
+              <span>Bangalore, IN</span>
+              <span class="sep">/</span>
+              <span>2.5 yrs uptime</span>
+            </div>
+
+            <p class="hero-lede" data-rise>
+              I build and operate the systems that <em>move money</em>, schedule people, and stay up.
+            </p>
+
+            <div class="hero-ctas" data-rise>
+              <a href="#deployments" class="btn btn-hot" data-cur="INSPECT">
+                <span>Inspect System</span>
+                <svg class="arrow" width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 6h8M6.5 2.5 10 6l-3.5 3.5"/></svg>
               </a>
-              <a href="https://www.linkedin.com/in/sahil-patani-2721231b8/" target="_blank" rel="noopener noreferrer" class="social-link" data-magnetic aria-label="LinkedIn">
-                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
-              </a>
-              <a href="https://leetcode.com/u/spatani9/" target="_blank" rel="noopener noreferrer" class="social-link" data-magnetic aria-label="LeetCode">
-                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M13.483 0a1.374 1.374 0 0 0-.961.438L7.116 6.226l-3.854 4.126a5.266 5.266 0 0 0-1.209 2.104 5.35 5.35 0 0 0-.125.513 5.527 5.527 0 0 0 .062 2.362 5.83 5.83 0 0 0 .349 1.017 5.938 5.938 0 0 0 1.271 1.818l4.277 4.193.039.038c2.248 2.165 5.852 2.133 8.063-.074l2.396-2.392c.54-.54.54-1.414.003-1.955a1.378 1.378 0 0 0-1.951-.003l-2.396 2.392a3.021 3.021 0 0 1-4.205.038l-.02-.019-4.276-4.193c-.652-.64-.972-1.469-.948-2.263a2.68 2.68 0 0 1 .066-.523 2.545 2.545 0 0 1 .619-1.164L9.13 8.114c1.058-1.134 3.204-1.27 4.43-.278l3.501 2.831c.593.48 1.461.387 1.94-.207a1.384 1.384 0 0 0-.207-1.943l-3.5-2.831c-.8-.647-1.766-1.045-2.774-1.202l2.015-2.158A1.384 1.384 0 0 0 13.483 0zm-2.866 12.815a1.38 1.38 0 0 0-1.38 1.382 1.38 1.38 0 0 0 1.38 1.382H20.79a1.38 1.38 0 0 0 1.38-1.382 1.38 1.38 0 0 0-1.38-1.382z"/></svg>
-              </a>
+              <a href="#connect" class="btn" data-cur="CONNECT"><span>Open Channel</span></a>
             </div>
           </div>
+
+          <div class="panel ticked stream" data-fade>
+            <div class="panel-bar">
+              <span class="dot ok pulse"></span>
+              <span class="sys">ingress · live</span>
+              <span class="spacer"></span>
+              <span class="sys" id="stream-rate">0 rps</span>
+            </div>
+            <div class="stream-body" id="stream" aria-hidden="true"></div>
+          </div>
+        </div>
+
+        <div class="strip mt-7" data-fade>
+          <div class="readout">
+            <span class="readout-label">Uptime</span>
+            <span class="readout-value">2y <span class="unit">6mo</span></span>
+            <svg class="spark" data-spark="up" viewBox="0 0 100 22" preserveAspectRatio="none"></svg>
+          </div>
+          <div class="readout">
+            <span class="readout-label">Requests / mo</span>
+            <span class="readout-value is-live"><span data-count="13412" data-suffix="+">0</span></span>
+            <svg class="spark" data-spark="req" viewBox="0 0 100 22" preserveAspectRatio="none"></svg>
+          </div>
+          <div class="readout">
+            <span class="readout-label">Users reached</span>
+            <span class="readout-value"><span data-count="200">0</span><span class="unit">k+</span></span>
+            <svg class="spark" data-spark="usr" viewBox="0 0 100 22" preserveAspectRatio="none"></svg>
+          </div>
+          <div class="readout">
+            <span class="readout-label">Open incidents</span>
+            <span class="readout-value">0</span>
+            <span class="readout-delta">4 resolved · 0 regressions</span>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ─────────── 02 · README ─────────── -->
+    <section class="sec" id="readme" aria-label="About">
+      <div class="wrap">
+        <div class="sec-head">
+          <span class="sec-id">02</span>
+          <span class="sec-title">Readme</span>
+          <span class="sec-note">who is operating this</span>
+        </div>
+
+        <div class="g g-split">
           <div>
-            <form class="contact-form" id="contact-form" name="contact" data-netlify="true" method="POST">
+            <p class="readme-say" data-rise>
+              Most of what I build is <em>invisible when it works</em>.
+            </p>
+            <p class="readme-say" data-rise>
+              Payments that settle once. Schedules that don&rsquo;t double-book. Migrations nobody notices.
+            </p>
+            <div class="mt-6 prose" data-rise>
+              <p>Two and a half years operating production systems end&#8209;to&#8209;end — not just shipping features, but owning them after they ship. That means designing the schema, writing the API, and then being the one who reads the replica at 2am when revenue looks wrong.</p>
+              <p class="mt-4">The work I&rsquo;m proudest of is the <strong>root&#8209;cause record</strong>: defects that had been quietly running for years, traced against live data, blast radius quantified, then fixed properly rather than patched. A double&#8209;charge race across three payment gateways. A pipeline where 40% of calls silently never fired. Things nobody had a dashboard for.</p>
+              <p class="mt-4">Before that, I was technical point of contact for <strong>Uber, HDFC Ergo and InCred</strong> — diagnosing production issues inside customer environments, where you don&rsquo;t get to say &ldquo;works on my machine&rdquo;.</p>
+            </div>
+          </div>
+
+          <div>
+            <div class="panel ticked" data-fade>
+              <div class="panel-bar">
+                <span class="sys">operator.json</span>
+                <span class="spacer"></span>
+                <span class="sys" style="color:var(--faint)">read-only</span>
+              </div>
+              <div class="panel-body">
+                <dl class="kv">
+                  <dt>Role</dt>
+                  <dd>Backend Engineer &mdash; <span class="code">CodeYoung</span></dd>
+
+                  <dt>Base</dt>
+                  <dd>Bangalore, India &middot; <span class="code">ap-south-1</span></dd>
+
+                  <dt>Focus</dt>
+                  <dd>Payment integrations, scheduling systems, data migrations, production RCA</dd>
+
+                  <dt>Runtime</dt>
+                  <dd>Node.js &middot; TypeScript &middot; Spring Boot &middot; FastAPI</dd>
+
+                  <dt>Storage</dt>
+                  <dd>MongoDB &middot; PostgreSQL &middot; MySQL &middot; Redis</dd>
+
+                  <dt>Prior</dt>
+                  <dd>Thriving Springs &mdash; <span class="code">200k+</span> user LMS platform, enterprise POC</dd>
+
+                  <dt>Degree</dt>
+                  <dd>B.Tech Information Technology, Manipal University Jaipur &mdash; <span class="code">8.9/10</span></dd>
+
+                  <dt>Algorithms</dt>
+                  <dd><span class="code">300+</span> problems solved on LeetCode</dd>
+
+                  <dt>Status</dt>
+                  <dd><span class="pill done"><span class="dot ok"></span> Open to opportunities</span></dd>
+                </dl>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ─────────── 03 · STACK ─────────── -->
+    <section class="sec" id="stack" aria-label="Technical stack">
+      <div class="wrap">
+        <div class="sec-head">
+          <span class="sec-id">03</span>
+          <span class="sec-title">Stack</span>
+          <span class="sec-note">hover a node to trace its path</span>
+        </div>
+
+        <div class="mesh-shell">
+          <div class="mesh-scroll">
+            <div class="mesh" id="mesh">
+              <svg class="mesh-wires" id="mesh-wires" aria-hidden="true"></svg>
+
+              <div class="tier" data-tier="client">
+                <div class="tier-head">Client</div>
+                <button class="node" data-node="react"  data-to="nginx"    data-info="Primary UI runtime. Component-driven admin dashboards over large, permission-scoped datasets.">React</button>
+                <button class="node" data-node="redux"  data-to="nginx"    data-info="Redux Toolkit for predictable client state across long-running admin workflows.">Redux Toolkit</button>
+                <button class="node" data-node="angular" data-to="nginx"   data-info="Angular admin dashboards at Thriving Springs, operating over the full 200k+ user base.">Angular</button>
+                <button class="node" data-node="html"   data-to="nginx"    data-info="HTML5 and CSS3 — semantic structure, responsive layout, accessible interaction.">HTML5 / CSS3</button>
+              </div>
+
+              <div class="tier" data-tier="edge">
+                <div class="tier-head">Edge</div>
+                <button class="node" data-node="nginx"  data-to="node,spring,fastapi" data-info="Nginx reverse proxy and TLS termination in front of containerised services.">Nginx</button>
+                <button class="node" data-node="rest"   data-to="node,spring,fastapi" data-info="REST API design — resource modelling, faceted counts, server-driven search, filtering and pagination.">REST APIs</button>
+                <button class="node" data-node="ws"     data-to="socket"   data-info="WebSockets for real-time collaboration — sub-100ms event propagation with resilient reconnect.">WebSockets</button>
+                <button class="node" data-node="rbac"   data-to="node,spring" data-info="JWT authentication with RBAC-aware query paths — permissions enforced at the data layer, not the view.">JWT / RBAC</button>
+              </div>
+
+              <div class="tier" data-tier="service">
+                <div class="tier-head">Service</div>
+                <button class="node" data-node="node"    data-to="sqs,redis,mongo,sequelize" data-info="Node.js and Express — the primary service runtime across both roles. Payments, scheduling, LMS APIs.">Node.js / Express</button>
+                <button class="node" data-node="ts"      data-to="node"     data-info="TypeScript — typed service boundaries and contract safety across dual-write migration paths.">TypeScript</button>
+                <button class="node" data-node="spring"  data-to="jpa,sql"  data-info="Java + Spring Boot — layered Controller / Service / Repository architecture.">Spring Boot</button>
+                <button class="node" data-node="fastapi" data-to="mongo,redis" data-info="FastAPI — async Python services for LMS and OJT workflows alongside the Node stack.">FastAPI</button>
+                <button class="node" data-node="micro"   data-to="sqs"      data-info="Microservices — containerised, independently deployable, communicating over queues and HTTP.">Microservices</button>
+              </div>
+
+              <div class="tier" data-tier="async">
+                <div class="tier-head">Async</div>
+                <button class="node" data-node="sqs"    data-to="mongo,redis" data-info="AWS SQS — backbone of Loop, the scheduling engine handling 13k+ requests a month.">AWS SQS</button>
+                <button class="node" data-node="cron"   data-to="mongo"    data-info="Cron-based email and WhatsApp pipelines — decoupled reminder delivery, +30% task completion.">Cron Pipelines</button>
+                <button class="node" data-node="tasks"  data-to="mongo"    data-info="Scheduled tasks with atomic reservation and dedup windows — 35k+ reminders a month, zero duplicates.">Scheduled Tasks</button>
+                <button class="node" data-node="socket" data-to="mongo"    data-info="Socket.io — 50+ concurrent editors with optimistic locking and conflict-aware updates.">Socket.io</button>
+              </div>
+
+              <div class="tier" data-tier="data">
+                <div class="tier-head">Data</div>
+                <button class="node" data-node="mongo"     data-info="MongoDB — index-aware schema design; cut average query latency 15% and removed stored-data redundancy.">MongoDB</button>
+                <button class="node" data-node="redis"     data-info="Redis — TTL-driven cache invalidation that stabilised API response times under traffic spikes.">Redis</button>
+                <button class="node" data-node="sql"       data-info="PostgreSQL and MySQL — normalised relational schemas, indexing and query optimisation.">PostgreSQL / MySQL</button>
+                <button class="node" data-node="sequelize" data-info="Sequelize ORM — migrations and backward-compatible data contracts for staged rollouts.">Sequelize</button>
+                <button class="node" data-node="jpa"       data-info="JPA / Hibernate — normalised entity mapping separating forms, fields, responses and values.">JPA / Hibernate</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="mesh-detail" id="mesh-detail">
+            <span class="mk" id="mesh-key">mesh</span>
+            <span class="mv" id="mesh-val">Five tiers, twenty-two components. Hover any node to light the path it actually takes in production.</span>
+          </div>
+
+          <div class="band">
+            <div class="band-cell">
+              <span class="sys">Cloud &amp; DevOps</span>
+              <div class="tag-row">
+                <span class="tag">AWS EC2</span><span class="tag">S3</span><span class="tag">SQS</span><span class="tag">IAM</span><span class="tag">RDS</span>
+                <span class="tag">Docker</span><span class="tag">Kubernetes</span><span class="tag">Linux</span><span class="tag">CI/CD</span>
+              </div>
+            </div>
+            <div class="band-cell">
+              <span class="sys">Observability &amp; Reliability</span>
+              <div class="tag-row">
+                <span class="tag">Sentry</span><span class="tag">Winston</span><span class="tag">Loggly</span>
+                <span class="tag">Jest</span><span class="tag">Production RCA</span><span class="tag">Incident Investigation</span>
+              </div>
+            </div>
+            <div class="band-cell">
+              <span class="sys">Integrations</span>
+              <div class="tag-row">
+                <span class="tag">Stripe</span><span class="tag">PayPal</span><span class="tag">In-house Gateway</span>
+                <span class="tag">Zoom</span><span class="tag">WhatsApp Business API</span><span class="tag">CRM Migration</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ─────────── 04 · DEPLOYMENTS ─────────── -->
+    <section class="sec" id="deployments" aria-label="Deployments">
+      <div class="wrap">
+        <div class="sec-head">
+          <span class="sec-id">04</span>
+          <span class="sec-title">Deployments</span>
+          <span class="sec-note">5 featured &middot; 6 additional</span>
+        </div>
+
+        <!-- D1 · LOOP -->
+        <article class="dep">
+          <div class="dep-head">
+            <span class="idx">D-01</span>
+            <span class="nm">loop &mdash; scheduling engine</span>
+            <span class="org">codeyoung</span>
+            <span class="push"></span>
+            <span class="pill done"><span class="dot ok"></span> In production</span>
+          </div>
+          <div class="dep-body">
+            <div class="dep-info">
+              <h3 class="dep-title">An SQS-backed scheduling engine that never bills twice</h3>
+              <p class="dep-desc">I own the student&#8209;reschedule and mentor&#8209;substitution flows in <b>Loop</b>, an SQS&#8209;backed engine processing <b>13k+ requests a month</b>. Shipped a <b>deferred cancellation ledger</b> that eliminated a defect charging students twice for a single cancellation &mdash; cancellations are now recorded as intent and settled once at interval close.</p>
+              <div class="dep-stats">
+                <div class="dep-stat"><span class="k">Throughput</span><span class="v">13k+/mo</span></div>
+                <div class="dep-stat"><span class="k">Flows owned</span><span class="v">2</span></div>
+                <div class="dep-stat"><span class="k">Double charges</span><span class="v">0</span></div>
+              </div>
+              <div class="tag-row">
+                <span class="tag">Node.js</span><span class="tag">AWS SQS</span><span class="tag">TypeScript</span><span class="tag">MongoDB</span><span class="tag">Jest</span>
+              </div>
+            </div>
+            <div class="dep-diagram">
+              <div class="dg-head">
+                <span class="dot idle" data-dg-dot></span>
+                <span>request path</span>
+                <span class="push"></span>
+                <button class="trace-btn" data-trace="loop" data-cur="RUN"><span class="dot idle"></span> Run trace</button>
+              </div>
+              <svg class="dg" data-dg="loop" viewBox="0 0 400 190" preserveAspectRatio="xMidYMid meet" aria-hidden="true"></svg>
+            </div>
+          </div>
+        </article>
+
+        <!-- D2 · CRM MIGRATION -->
+        <article class="dep">
+          <div class="dep-head">
+            <span class="idx">D-02</span>
+            <span class="nm">crm migration &mdash; dual-write cutover</span>
+            <span class="org">codeyoung</span>
+            <span class="push"></span>
+            <span class="pill hot">Lead</span>
+          </div>
+          <div class="dep-body">
+            <div class="dep-info">
+              <h3 class="dep-title">Replacing a CRM under live traffic, with a rollback that needs no deploy</h3>
+              <p class="dep-desc">Leading a <b>zero&#8209;downtime CRM migration</b> across two backend services. The design is a config&#8209;driven adapter layer: both CRMs sit behind one interface, so dual&#8209;write, phased cutover and <b>instant rollback</b> are all config changes &mdash; no redeploy, no traffic drain. <b>135k+ operations</b> synced across <b>9 flows</b> since rollout.</p>
+              <div class="dep-stats">
+                <div class="dep-stat"><span class="k">Ops synced</span><span class="v">135k+</span></div>
+                <div class="dep-stat"><span class="k">Flows</span><span class="v">9</span></div>
+                <div class="dep-stat"><span class="k">Downtime</span><span class="v">0s</span></div>
+              </div>
+              <div class="tag-row">
+                <span class="tag">Node.js</span><span class="tag">Adapter Pattern</span><span class="tag">Dual-write</span><span class="tag">Sequelize</span><span class="tag">Feature Flags</span>
+              </div>
+            </div>
+            <div class="dep-diagram">
+              <div class="dg-head">
+                <span class="dot idle" data-dg-dot></span>
+                <span>write path</span>
+                <span class="push"></span>
+                <button class="trace-btn" data-trace="crm" data-cur="RUN"><span class="dot idle"></span> Run trace</button>
+              </div>
+              <svg class="dg" data-dg="crm" viewBox="0 0 400 190" preserveAspectRatio="xMidYMid meet" aria-hidden="true"></svg>
+            </div>
+          </div>
+        </article>
+
+        <!-- D3 · BILLING -->
+        <article class="dep">
+          <div class="dep-head">
+            <span class="idx">D-03</span>
+            <span class="nm">billing mesh &mdash; 3 gateways</span>
+            <span class="org">codeyoung</span>
+            <span class="push"></span>
+            <span class="pill done"><span class="dot ok"></span> In production</span>
+          </div>
+          <div class="dep-body">
+            <div class="dep-info">
+              <h3 class="dep-title">One billing interval, three payment providers, no drift</h3>
+              <p class="dep-desc">Extended interval&#8209;based billing across <b>Stripe, PayPal and an in&#8209;house gateway</b> &mdash; including custom multi&#8209;month PayPal plans and <b>mid&#8209;cycle vendor switching</b> that preserves interval metadata so a customer moving providers never gets double&#8209;billed or skipped. The same surface later exposed a webhook race that had been double&#8209;charging since 2022.</p>
+              <div class="dep-stats">
+                <div class="dep-stat"><span class="k">Gateways</span><span class="v">3</span></div>
+                <div class="dep-stat"><span class="k">Defects traced</span><span class="v">22</span></div>
+                <div class="dep-stat"><span class="k">Billing drift</span><span class="v">0</span></div>
+              </div>
+              <div class="tag-row">
+                <span class="tag">Stripe</span><span class="tag">PayPal</span><span class="tag">Webhooks</span><span class="tag">Idempotency</span><span class="tag">Node.js</span>
+              </div>
+            </div>
+            <div class="dep-diagram">
+              <div class="dg-head">
+                <span class="dot idle" data-dg-dot></span>
+                <span>settlement path</span>
+                <span class="push"></span>
+                <button class="trace-btn" data-trace="billing" data-cur="RUN"><span class="dot idle"></span> Run trace</button>
+              </div>
+              <svg class="dg" data-dg="billing" viewBox="0 0 400 190" preserveAspectRatio="xMidYMid meet" aria-hidden="true"></svg>
+            </div>
+          </div>
+        </article>
+
+        <!-- D4 · LMS -->
+        <article class="dep">
+          <div class="dep-head">
+            <span class="idx">D-04</span>
+            <span class="nm">lms platform &mdash; 200k+ users</span>
+            <span class="org">thriving springs</span>
+            <span class="push"></span>
+            <span class="pill">Shipped</span>
+          </div>
+          <div class="dep-body">
+            <div class="dep-info">
+              <h3 class="dep-title">Backend for an enterprise LMS serving 200k+ concurrent-access users</h3>
+              <p class="dep-desc">Designed and owned the backend APIs for LMS and OJT workflows in <b>Node.js and FastAPI</b>, powering automated role assignment and skill mapping for <b>200k+ active users</b>. Redesigned MongoDB schemas with index&#8209;aware access patterns &mdash; <b>15% lower average query latency</b>. Redis TTL caching held response times under traffic spikes; async notification pipelines lifted task completion <b>30%</b>.</p>
+              <div class="dep-stats">
+                <div class="dep-stat"><span class="k">Active users</span><span class="v">200k+</span></div>
+                <div class="dep-stat"><span class="k">Query latency</span><span class="v">&minus;15%</span></div>
+                <div class="dep-stat"><span class="k">Completion</span><span class="v">+30%</span></div>
+              </div>
+              <div class="tag-row">
+                <span class="tag">Node.js</span><span class="tag">FastAPI</span><span class="tag">MongoDB</span><span class="tag">Redis</span><span class="tag">Docker</span><span class="tag">Kubernetes</span><span class="tag">AWS</span>
+              </div>
+            </div>
+            <div class="dep-diagram">
+              <div class="dg-head">
+                <span class="dot idle" data-dg-dot></span>
+                <span>read path</span>
+                <span class="push"></span>
+                <button class="trace-btn" data-trace="lms" data-cur="RUN"><span class="dot idle"></span> Run trace</button>
+              </div>
+              <svg class="dg" data-dg="lms" viewBox="0 0 400 190" preserveAspectRatio="xMidYMid meet" aria-hidden="true"></svg>
+            </div>
+          </div>
+        </article>
+
+        <!-- D5 · KANBAN -->
+        <article class="dep">
+          <div class="dep-head">
+            <span class="idx">D-05</span>
+            <span class="nm">realtime kanban</span>
+            <span class="org">personal</span>
+            <span class="push"></span>
+            <span class="pill">Open source</span>
+          </div>
+          <div class="dep-body">
+            <div class="dep-info">
+              <h3 class="dep-title">50+ concurrent editors, sub-100ms propagation, no lost writes</h3>
+              <p class="dep-desc">A WebSocket collaboration system supporting <b>50+ concurrent users</b> with <b>sub&#8209;100ms event propagation</b>. Concurrent edits resolve through <b>optimistic locking</b> and conflict&#8209;aware updates; indexed MongoDB schemas keep reads low&#8209;latency, and WebSocket reconnection recovers state automatically rather than dropping the client.</p>
+              <div class="dep-stats">
+                <div class="dep-stat"><span class="k">Concurrent</span><span class="v">50+</span></div>
+                <div class="dep-stat"><span class="k">Propagation</span><span class="v">&lt;100ms</span></div>
+                <div class="dep-stat"><span class="k">Lost writes</span><span class="v">0</span></div>
+              </div>
+              <div class="tag-row">
+                <span class="tag">Socket.io</span><span class="tag">Express.js</span><span class="tag">MongoDB</span><span class="tag">Angular</span><span class="tag">JWT</span>
+              </div>
+            </div>
+            <div class="dep-diagram">
+              <div class="dg-head">
+                <span class="dot idle" data-dg-dot></span>
+                <span>event fan-out</span>
+                <span class="push"></span>
+                <button class="trace-btn" data-trace="kanban" data-cur="RUN"><span class="dot idle"></span> Run trace</button>
+              </div>
+              <svg class="dg" data-dg="kanban" viewBox="0 0 400 190" preserveAspectRatio="xMidYMid meet" aria-hidden="true"></svg>
+            </div>
+          </div>
+        </article>
+
+        <!-- ALSO SHIPPED -->
+        <div class="mt-8">
+          <div class="sec-head" style="margin-bottom:var(--s-5)">
+            <span class="sec-id">04b</span>
+            <span class="sec-title">Also shipped</span>
+          </div>
+          <table class="ship">
+            <tbody>
+              <tr>
+                <td class="n">Reminder pipeline</td>
+                <td class="d">Rebuilt AI voice&#8209;call, WhatsApp and email outreach as a scheduled&#8209;task system with atomic call reservation and deduplication windows &mdash; every reminder auditable.</td>
+                <td class="m">35k+/mo &middot; 0 dupes</td>
+              </tr>
+              <tr>
+                <td class="n">Scheduling-requests API</td>
+                <td class="d">Re&#8209;architected from per&#8209;mentor rows to request&#8209;level grouping: faceted counts, server&#8209;driven search, filtering, pagination and a mentor&#8209;eligibility endpoint. Validated against live staging data.</td>
+                <td class="m">Jest covered</td>
+              </tr>
+              <tr>
+                <td class="n">RCA toolkit</td>
+                <td class="d">Read&#8209;only production&#8209;replica investigation CLIs &mdash; query, schema and entity&#8209;timeline tools plus incident playbooks &mdash; for root&#8209;causing live revenue defects safely.</td>
+                <td class="m">3 CLIs</td>
+              </tr>
+              <tr>
+                <td class="n">Data migration</td>
+                <td class="d">Migrated and validated production records via staged rollouts, integrity checks and backward&#8209;compatible data contracts.</td>
+                <td class="m">100k+ &middot; 0 loss</td>
+              </tr>
+              <tr>
+                <td class="n">Bulk CSV ingestion</td>
+                <td class="d">Schema&#8209;validated bulk import with partial&#8209;failure recovery, built for onboarding at 200k+ user scale.</td>
+                <td class="m">200k+ scale</td>
+              </tr>
+              <tr>
+                <td class="n">Dynamic form builder</td>
+                <td class="d">Layered Spring Boot backend (Controller&ndash;Service&ndash;Repository) with a normalised schema separating forms, fields, responses and response values &mdash; arbitrary form composition, scalable response storage.</td>
+                <td class="m">React &middot; Spring</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- ─────────── 05 · INCIDENTS ─────────── -->
+    <section class="sec" id="incidents" aria-label="Incidents">
+      <div class="wrap">
+        <div class="sec-head">
+          <span class="sec-id">05</span>
+          <span class="sec-title">Incidents</span>
+          <span class="sec-note">4 resolved &middot; company &amp; client names withheld</span>
+        </div>
+
+        <p class="lede" style="max-width:44ch; margin-bottom:var(--s-6)" data-rise>
+          Anyone can list what they built. This is what I found <em class="it" style="color:var(--signal)">already broken</em>.
+        </p>
+
+        <!-- INC 1 -->
+        <div class="inc" data-inc>
+          <button class="inc-head" aria-expanded="false">
+            <span class="inc-id">INC-001</span>
+            <span class="pill sev1">Sev-1</span>
+            <span class="inc-name">Non-atomic webhook race double-charged customers across three payment gateways</span>
+            <span class="inc-when">undetected 4 yrs</span>
+            <span class="inc-chev"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4.5 2.5 8 6l-3.5 3.5"/></svg></span>
+          </button>
+          <div class="inc-panel"><div><div class="inc-report">
+            <div class="inc-grid">
+              <div class="inc-block">
+                <span class="sys">Blast radius</span>
+                <div class="inc-radius">
+                  <div class="r"><b>22</b> recurring customer cases</div>
+                  <div class="r"><b>3</b> payment gateways affected</div>
+                  <div class="r"><b>2022</b> earliest occurrence</div>
+                  <div class="r res"><b>0</b> open after fix</div>
+                </div>
+              </div>
+              <div class="inc-block">
+                <span class="sys">Root cause</span>
+                <p>Concurrent webhook deliveries mutated the subscription ledger with no idempotency guard. Two deliveries for the same provider event both passed the &ldquo;already charged?&rdquo; read before either committed its write &mdash; a classic check&#8209;then&#8209;act race, invisible under normal load and only reproducible when the provider retried.</p>
+              </div>
+            </div>
+            <div class="inc-fix inc-grid">
+              <div class="inc-block">
+                <span class="sys">Detection</span>
+                <p>Found by querying a <b>read&#8209;only production replica</b> with purpose&#8209;built entity&#8209;timeline tooling &mdash; reconstructing each customer&rsquo;s charge history end to end rather than trusting aggregate reports. The blast radius was quantified <b>before</b> the fix shipped, not after.</p>
+              </div>
+              <div class="inc-block">
+                <span class="sys">Resolution</span>
+                <p>Reserve&#8209;then&#8209;write on the ledger with an idempotency key derived from the provider event id, making the handler replay&#8209;safe. Reconciled the historical cases across all three gateways.</p>
+              </div>
+            </div>
+          </div></div></div>
+        </div>
+
+        <!-- INC 2 -->
+        <div class="inc" data-inc>
+          <button class="inc-head" aria-expanded="false">
+            <span class="inc-id">INC-002</span>
+            <span class="pill sev1">Sev-1</span>
+            <span class="inc-name">A single cancellation billed the customer twice</span>
+            <span class="inc-when">revenue-facing</span>
+            <span class="inc-chev"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4.5 2.5 8 6l-3.5 3.5"/></svg></span>
+          </button>
+          <div class="inc-panel"><div><div class="inc-report">
+            <div class="inc-grid">
+              <div class="inc-block">
+                <span class="sys">Blast radius</span>
+                <div class="inc-radius">
+                  <div class="r"><b>2&times;</b> charge per cancellation</div>
+                  <div class="r"><b>Direct</b> customer-facing revenue</div>
+                  <div class="r res"><b>0</b> recurrence since ledger</div>
+                </div>
+              </div>
+              <div class="inc-block">
+                <span class="sys">Root cause</span>
+                <p>Cancellation and rebill ran as two separate transactions. A cancellation landing mid&#8209;cycle was counted by both the closing interval and the opening one, so the customer paid for the same period twice.</p>
+              </div>
+            </div>
+            <div class="inc-fix inc-grid">
+              <div class="inc-block">
+                <span class="sys">Resolution</span>
+                <p>Introduced a <b>deferred cancellation ledger</b>. Cancellations are recorded as <em>intent</em> rather than applied immediately, then settled exactly once when the interval closes &mdash; making the operation idempotent regardless of when in the cycle it arrives.</p>
+              </div>
+              <div class="inc-block">
+                <span class="sys">Verification</span>
+                <p>Replayed historical cancellation sequences against staging with live&#8209;shaped data; covered the settlement boundary with Jest suites so the regression cannot return silently.</p>
+              </div>
+            </div>
+          </div></div></div>
+        </div>
+
+        <!-- INC 3 -->
+        <div class="inc" data-inc>
+          <button class="inc-head" aria-expanded="false">
+            <span class="inc-id">INC-003</span>
+            <span class="pill sev2">Sev-2</span>
+            <span class="inc-name">40% of scheduled AI feedback calls silently never fired</span>
+            <span class="inc-when">no alert existed</span>
+            <span class="inc-chev"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4.5 2.5 8 6l-3.5 3.5"/></svg></span>
+          </button>
+          <div class="inc-panel"><div><div class="inc-report">
+            <div class="inc-grid">
+              <div class="inc-block">
+                <span class="sys">Blast radius</span>
+                <div class="inc-radius">
+                  <div class="r"><b>40%</b> of feedback calls dropped</div>
+                  <div class="r"><b>0</b> errors surfaced</div>
+                  <div class="r"><b>35k+</b> monthly reminders in scope</div>
+                  <div class="r res"><b>100%</b> auditable after fix</div>
+                </div>
+              </div>
+              <div class="inc-block">
+                <span class="sys">Root cause</span>
+                <p>Dispatch relied on a scheduler that read tasks without reserving them. Overlapping execution windows caused tasks to be skipped, and because a dropped task threw no error and had no dead&#8209;letter path, the failure was <b>completely silent</b> &mdash; the dashboards showed success.</p>
+              </div>
+            </div>
+            <div class="inc-fix inc-grid">
+              <div class="inc-block">
+                <span class="sys">Resolution</span>
+                <p>Rebuilt the pipeline as a scheduled&#8209;task system with <b>atomic call reservation</b> and deduplication windows across all three channels &mdash; AI voice, WhatsApp and email &mdash; eliminating both drops and duplicate outreach.</p>
+              </div>
+              <div class="inc-block">
+                <span class="sys">Follow-through</span>
+                <p>Every reminder now writes an audit record, so &ldquo;did this fire?&rdquo; is a query rather than an assumption. The failure mode is observable by construction.</p>
+              </div>
+            </div>
+          </div></div></div>
+        </div>
+
+        <!-- INC 4 -->
+        <div class="inc" data-inc>
+          <button class="inc-head" aria-expanded="false">
+            <span class="inc-id">INC-004</span>
+            <span class="pill sev2">Sev-2</span>
+            <span class="inc-name">95 demo sessions wrongly recorded as unattended</span>
+            <span class="inc-when">reporting drift</span>
+            <span class="inc-chev"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4.5 2.5 8 6l-3.5 3.5"/></svg></span>
+          </button>
+          <div class="inc-panel"><div><div class="inc-report">
+            <div class="inc-grid">
+              <div class="inc-block">
+                <span class="sys">Blast radius</span>
+                <div class="inc-radius">
+                  <div class="r"><b>95</b> sessions misrecorded</div>
+                  <div class="r"><b>Downstream</b> reporting corrupted</div>
+                  <div class="r res"><b>95</b> backfilled correctly</div>
+                </div>
+              </div>
+              <div class="inc-block">
+                <span class="sys">Root cause</span>
+                <p>Attendance was derived from a single webhook that could legitimately arrive <b>before</b> the session record existed. Those early events matched nothing and were discarded rather than queued &mdash; so a genuinely attended session was recorded as a no&#8209;show.</p>
+              </div>
+            </div>
+            <div class="inc-fix inc-grid">
+              <div class="inc-block">
+                <span class="sys">Resolution</span>
+                <p>Buffered late and early events, then reconciled attendance against the full entity timeline instead of a single signal. Backfilled all affected sessions.</p>
+              </div>
+              <div class="inc-block">
+                <span class="sys">Lesson</span>
+                <p>Any system deriving state from one webhook is one ordering assumption away from being wrong. Event order is a guarantee you have to build, not one you receive.</p>
+              </div>
+            </div>
+          </div></div></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ─────────── 06 · CHANGELOG ─────────── -->
+    <section class="sec" id="changelog" aria-label="Experience">
+      <div class="wrap">
+        <div class="sec-head">
+          <span class="sec-id">06</span>
+          <span class="sec-title">Changelog</span>
+          <span class="sec-note">newest first</span>
+        </div>
+
+        <div class="log-entry">
+          <div class="log-side">
+            <span class="log-ver">v2.0.0 &mdash; current</span>
+            <h3 class="log-role">Software Engineer</h3>
+            <span class="log-org">CodeYoung &middot; Bangalore</span>
+            <span class="log-when">March 2026 &rarr; present</span>
+            <div class="tag-row mt-3">
+              <span class="tag">Node.js</span><span class="tag">TypeScript</span><span class="tag">AWS SQS</span><span class="tag">Stripe</span><span class="tag">PayPal</span><span class="tag">Sequelize</span><span class="tag">Jest</span>
+            </div>
+          </div>
+          <div class="log-lines">
+            <div class="log-line"><span class="op">+</span><span>Lead a <b>zero-downtime CRM migration</b> (Cratio &rarr; Arali) across two backend services, designing a config-driven adapter layer enabling dual-write, phased cutover and instant rollback without a deploy &mdash; <span class="code">135k+</span> operations synced across <span class="code">9</span> flows.</span></div>
+            <div class="log-line"><span class="op">+</span><span>Own student-reschedule and mentor-substitution flows in <b>Loop</b>, an SQS-backed scheduling engine processing <span class="code">13k+</span> requests/month; shipped a deferred cancellation ledger that eliminated a double-charge defect.</span></div>
+            <div class="log-line"><span class="op mod">~</span><span>Re-architected the admin scheduling-requests API from per-mentor rows to <b>request-level grouping</b> &mdash; faceted counts, server-driven search, filtering, pagination and a mentor-eligibility endpoint. Validated against live staging data, covered by Jest suites.</span></div>
+            <div class="log-line"><span class="op mod">~</span><span>Rebuilt the demo reminder pipeline (AI voice calls, WhatsApp, email) as a scheduled-task system with <b>atomic call reservation</b> and dedup windows &mdash; eliminating duplicate outreach across <span class="code">35k+</span> reminders/month and making every reminder auditable.</span></div>
+            <div class="log-line"><span class="op">+</span><span>Extended <b>interval-based billing across three payment gateways</b> (Stripe, PayPal, in-house), adding custom multi-month PayPal plans and mid-cycle vendor switching that preserves interval metadata to prevent billing drift.</span></div>
+            <div class="log-line"><span class="op">+</span><span>Built a read-only <b>production-replica investigation toolkit</b> &mdash; query, schema and entity-timeline CLIs with incident playbooks &mdash; for root-causing live revenue and scheduling defects safely against production data.</span></div>
+            <div class="log-line"><span class="op">+</span><span>Used it to trace a non-atomic webhook race double-charging customers (<span class="code">22</span> recurring cases across <span class="code">3</span> gateways since 2022), prove <span class="code">40%</span> of AI feedback calls were silently never firing, and surface <span class="code">95</span> demo sessions wrongly marked unattended.</span></div>
+          </div>
+        </div>
+
+        <div class="log-entry">
+          <div class="log-side">
+            <span class="log-ver">v1.0.0</span>
+            <h3 class="log-role">Software Engineer</h3>
+            <span class="log-org">Thriving Springs &middot; Hyderabad</span>
+            <span class="log-when">February 2024 &rarr; February 2026</span>
+            <div class="tag-row mt-3">
+              <span class="tag">Node.js</span><span class="tag">FastAPI</span><span class="tag">MongoDB</span><span class="tag">Redis</span><span class="tag">Angular</span><span class="tag">Docker</span><span class="tag">Kubernetes</span><span class="tag">AWS</span>
+            </div>
+          </div>
+          <div class="log-lines">
+            <div class="log-line"><span class="op">+</span><span>Technical point of contact for enterprise clients including <b>Uber, HDFC Ergo and InCred</b> &mdash; diagnosed production issues, coordinated fixes and supported live feature rollouts inside customer environments.</span></div>
+            <div class="log-line"><span class="op mod">~</span><span>Redesigned MongoDB schemas with <b>index-aware access patterns</b> and consolidated duplicated data paths &mdash; cutting average query latency <span class="code">15%</span> and reducing stored-data redundancy.</span></div>
+            <div class="log-line"><span class="op">+</span><span>Designed and owned backend APIs for LMS and OJT workflows in Node.js and FastAPI, powering automated role assignment and skill mapping for <span class="code">200k+</span> active users under concurrent access.</span></div>
+            <div class="log-line"><span class="op">+</span><span>Built server-driven filtering, pagination and <b>RBAC-aware query paths</b> for Angular admin dashboards operating over the full user base, sharply cutting data-discovery time on large datasets.</span></div>
+            <div class="log-line"><span class="op">+</span><span>Built asynchronous cron-based email and WhatsApp notification pipelines, decoupling reminder delivery from synchronous workflows and improving task completion rates <span class="code">30%</span>.</span></div>
+            <div class="log-line"><span class="op mod">~</span><span>Migrated and validated <span class="code">100k+</span> production records via staged rollouts, integrity checks and backward-compatible data contracts with <b>zero data loss</b>; built bulk CSV ingestion with schema validation and partial-failure recovery for <span class="code">200k+</span>-user onboarding.</span></div>
+            <div class="log-line"><span class="op mod">~</span><span>Stabilised API response times under traffic spikes using <b>Redis caching with TTL-driven invalidation</b>; deployed containerised microservices on Docker and Kubernetes in AWS-hosted environments.</span></div>
+          </div>
+        </div>
+
+        <div class="log-entry">
+          <div class="log-side">
+            <span class="log-ver">v0.1.0</span>
+            <h3 class="log-role">B.Tech, Information Technology</h3>
+            <span class="log-org">Manipal University Jaipur</span>
+            <span class="log-when">October 2020 &rarr; July 2024</span>
+            <div class="tag-row mt-3">
+              <span class="tag">DSA</span><span class="tag">System Design</span><span class="tag">OOP</span><span class="tag">Networks</span>
+            </div>
+          </div>
+          <div class="log-lines">
+            <div class="log-line"><span class="op">+</span><span>Graduated with a CGPA of <span class="code">8.9 / 10.0</span>.</span></div>
+            <div class="log-line"><span class="op">+</span><span>Solved <span class="code">300+</span> data structures and algorithms problems on LeetCode.</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ─────────── 07 · CONNECT ─────────── -->
+    <section class="sec" id="connect" aria-label="Contact">
+      <div class="wrap">
+        <div class="sec-head">
+          <span class="sec-id">07</span>
+          <span class="sec-title">Connect</span>
+          <span class="sec-note">type <code style="color:var(--signal)">help</code> in the console</span>
+        </div>
+
+        <div class="g g-split-r">
+          <div>
+            <div class="term" id="term">
+              <div class="panel-bar">
+                <span class="dot ok pulse"></span>
+                <span class="sys">sahil@console &mdash; zsh</span>
+                <span class="spacer"></span>
+                <span class="sys" style="color:var(--faint)">interactive</span>
+              </div>
+              <div class="term-out" id="term-out" role="log" aria-live="polite" aria-label="Console output"></div>
+              <label class="term-in" for="term-input">
+                <span class="p">&rsaquo;</span>
+                <input id="term-input" type="text" autocomplete="off" autocapitalize="off" spellcheck="false"
+                       placeholder="type a command, or 'help'" aria-label="Console input" />
+              </label>
+            </div>
+            <div class="term-hints" id="term-hints" aria-hidden="true"></div>
+          </div>
+
+          <div>
+            <p class="lede" style="margin-bottom:var(--s-6)" data-rise>
+              Hiring, or just want to argue about <em class="it" style="color:var(--signal)">idempotency</em>?
+            </p>
+
+            <div class="chan">
+              <a class="chan-row" href="mailto:spatani9@gmail.com" data-copy="spatani9@gmail.com" data-cur="COPY">
+                <span class="chan-k">Email</span>
+                <span class="chan-v">spatani9@gmail.com</span>
+                <span class="chan-go"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3.5 8.5 8.5 3.5M4.5 3.5h4v4"/></svg></span>
+              </a>
+              <a class="chan-row" href="tel:+919309550866" data-cur="CALL">
+                <span class="chan-k">Phone</span>
+                <span class="chan-v">+91 93095 50866</span>
+                <span class="chan-go"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3.5 8.5 8.5 3.5M4.5 3.5h4v4"/></svg></span>
+              </a>
+              <a class="chan-row" href="https://github.com/sahilpatani1012" target="_blank" rel="noopener noreferrer" data-cur="OPEN">
+                <span class="chan-k">GitHub</span>
+                <span class="chan-v">sahilpatani1012</span>
+                <span class="chan-go"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3.5 8.5 8.5 3.5M4.5 3.5h4v4"/></svg></span>
+              </a>
+              <a class="chan-row" href="https://www.linkedin.com/in/sahil-patani-2721231b8/" target="_blank" rel="noopener noreferrer" data-cur="OPEN">
+                <span class="chan-k">LinkedIn</span>
+                <span class="chan-v">sahil-patani</span>
+                <span class="chan-go"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3.5 8.5 8.5 3.5M4.5 3.5h4v4"/></svg></span>
+              </a>
+              <a class="chan-row" href="https://leetcode.com/u/spatani9/" target="_blank" rel="noopener noreferrer" data-cur="OPEN">
+                <span class="chan-k">LeetCode</span>
+                <span class="chan-v">spatani9 &middot; 300+ solved</span>
+                <span class="chan-go"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3.5 8.5 8.5 3.5M4.5 3.5h4v4"/></svg></span>
+              </a>
+              <div class="chan-row" style="cursor:default">
+                <span class="chan-k">Location</span>
+                <span class="chan-v">Bangalore, India &middot; UTC+5:30</span>
+              </div>
+            </div>
+
+            <form class="form mt-6" id="form" name="contact" method="POST" data-netlify="true" netlify-honeypot="company">
               <input type="hidden" name="form-name" value="contact" />
-              <div class="form-group">
-                <input type="text" name="name" class="glass-input" placeholder=" " required autocomplete="name" />
-                <label>Your Name</label>
-                <span class="input-line"></span>
+              <p style="display:none"><label>Company <input name="company" /></label></p>
+
+              <div class="field">
+                <label for="f-name">Name</label>
+                <input id="f-name" name="name" type="text" required autocomplete="name" placeholder="who's asking" />
+                <span class="err" data-err></span>
               </div>
-              <div class="form-group">
-                <input type="email" name="email" class="glass-input" placeholder=" " required autocomplete="email" />
-                <label>Your Email</label>
-                <span class="input-line"></span>
+              <div class="field">
+                <label for="f-email">Email</label>
+                <input id="f-email" name="email" type="email" required autocomplete="email" placeholder="where to reply" />
+                <span class="err" data-err></span>
               </div>
-              <div class="form-group">
-                <textarea name="message" class="glass-input" rows="5" placeholder=" " required></textarea>
-                <label>Your Message</label>
-                <span class="input-line"></span>
+              <div class="field">
+                <label for="f-msg">Message</label>
+                <textarea id="f-msg" name="message" rows="4" required placeholder="the ask"></textarea>
+                <span class="err" data-err></span>
               </div>
-              <button type="submit" class="btn-primary" data-magnetic style="align-self:flex-start;">
-                Send Message
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-left:8px"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+              <button type="submit" class="btn btn-hot" style="align-self:flex-start" data-cur="SEND">
+                <span>Transmit</span>
+                <svg class="arrow" width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 6h8M6.5 2.5 10 6l-3.5 3.5"/></svg>
               </button>
+              <span class="form-note">Delivered via Netlify Forms &middot; no tracking, no third parties</span>
             </form>
           </div>
         </div>
@@ -483,19 +911,20 @@
 
   </main>
 
-  <!-- FOOTER -->
-  <footer class="footer" id="footer" aria-label="Footer">
-    <div class="footer-large-text" id="footer-large-text" aria-hidden="true">SAHIL</div>
-    <div class="container footer-content">
-      <p class="footer-copy">Designed & Built by Sahil Patani &copy; 2026</p>
-      <button class="back-to-top" id="back-to-top" aria-label="Back to top">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"/></svg>
-        Back to Top
-      </button>
+  <!-- ═══════════ FOOTER ═══════════ -->
+  <footer class="foot">
+    <div class="wrap foot-in">
+      <span class="dot ok pulse"></span>
+      <span>sahil-patani &middot; all systems nominal</span>
+      <span class="push"></span>
+      <span>Built with Vite, GSAP &amp; too much coffee</span>
+      <span style="color:var(--line-hot)">/</span>
+      <span>&copy; 2026</span>
+      <a href="#status" data-cur="TOP">Back to top &uarr;</a>
     </div>
   </footer>
+  </div>
 
-  <!-- Toast -->
-  <div class="toast" id="toast" role="status" aria-live="polite">Email copied to clipboard!</div>
+  <div class="toast" id="toast" role="status" aria-live="polite"><span class="dot ok"></span><span id="toast-msg">Copied</span></div>
 </body>
 </html>

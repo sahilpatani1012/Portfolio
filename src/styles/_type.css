@@ -1,0 +1,155 @@
+/* ═══════════════════════════════════════════════════════════
+   TYPE — Two voices.
+   MONO  = the system speaking  (labels, metrics, status, chrome)
+   SERIF = Sahil speaking       (statements, section titles, prose)
+   SANS  = supporting UI only   (buttons, dense body, form fields)
+   ═══════════════════════════════════════════════════════════ */
+
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@300;400;500;600&family=Instrument+Serif:ital@0;1&family=Inter+Tight:wght@300;400;500;600&display=swap');
+
+/* ─────────── SYSTEM VOICE ─────────── */
+
+.sys {
+  font-family: var(--mono);
+  font-size: var(--t-xs);
+  font-weight: 500;
+  letter-spacing: var(--track-wide);
+  text-transform: uppercase;
+  color: var(--mute);
+  font-variant-numeric: tabular-nums;
+}
+
+.sys-sm {
+  font-family: var(--mono);
+  font-size: var(--t-micro);
+  font-weight: 500;
+  letter-spacing: var(--track-wide);
+  text-transform: uppercase;
+  color: var(--faint);
+  font-variant-numeric: tabular-nums;
+}
+
+.sys-val {
+  font-family: var(--mono);
+  font-weight: 400;
+  letter-spacing: var(--track-tight);
+  font-variant-numeric: tabular-nums;
+  color: var(--text);
+}
+
+/* Live values — the only place signal colour appears by default */
+.live {
+  color: var(--signal);
+  font-variant-numeric: tabular-nums;
+}
+
+/* ─────────── HUMAN VOICE ─────────── */
+
+.say {
+  font-family: var(--serif);
+  font-weight: 400;
+  line-height: 1.08;
+  letter-spacing: -0.015em;
+  color: var(--text);
+}
+
+.say-mega  { font-family: var(--serif); font-size: var(--t-mega); line-height: 0.88; letter-spacing: -0.03em; }
+.say-xl    { font-family: var(--serif); font-size: var(--t-xl);   line-height: 1.0;  letter-spacing: -0.02em; }
+.say-lg    { font-family: var(--serif); font-size: var(--t-lg);   line-height: 1.12; letter-spacing: -0.015em; }
+.say-md    { font-family: var(--serif); font-size: var(--t-md);   line-height: 1.35; letter-spacing: -0.01em; }
+
+.say-mega, .say-xl, .say-lg, .say-md { color: var(--text); }
+
+em, .it { font-style: italic; }
+
+/* ─────────── SUPPORTING ─────────── */
+
+body {
+  font-family: var(--sans);
+  font-size: var(--t-body);
+  font-weight: 400;
+  line-height: 1.6;
+  color: var(--dim);
+  letter-spacing: -0.005em;
+}
+
+p { color: var(--dim); }
+
+.prose {
+  font-family: var(--sans);
+  font-size: var(--t-body);
+  line-height: 1.68;
+  color: var(--dim);
+  max-width: 62ch;
+}
+
+.prose strong,
+strong { color: var(--text); font-weight: 500; }
+
+.lede {
+  font-family: var(--serif);
+  font-size: clamp(1.25rem, 2.1vw, 1.875rem);
+  line-height: 1.38;
+  letter-spacing: -0.015em;
+  color: var(--text);
+  max-width: 26ch;
+}
+
+code, .code {
+  font-family: var(--mono);
+  font-size: 0.9em;
+  color: var(--text);
+}
+
+/* ─────────── SECTION HEADERS ─────────── */
+
+.sec-head {
+  display: flex;
+  align-items: baseline;
+  gap: var(--s-4);
+  padding-bottom: var(--s-4);
+  border-bottom: 1px solid var(--line);
+  margin-bottom: var(--s-7);
+}
+
+.sec-id {
+  font-family: var(--mono);
+  font-size: var(--t-micro);
+  font-weight: 600;
+  letter-spacing: var(--track-wide);
+  color: var(--signal);
+  flex-shrink: 0;
+}
+
+.sec-title {
+  font-family: var(--mono);
+  font-size: var(--t-xs);
+  font-weight: 500;
+  letter-spacing: var(--track-wide);
+  text-transform: uppercase;
+  color: var(--text);
+}
+
+.sec-note {
+  font-family: var(--mono);
+  font-size: var(--t-micro);
+  letter-spacing: var(--track-mid);
+  color: var(--faint);
+  margin-left: auto;
+  text-align: right;
+  flex-shrink: 0;
+}
+
+/* ─────────── REVEAL PRIMITIVES ─────────── */
+/* Progressive enhancement: JS adds .js to <html>. Without it, content is visible. */
+
+.js [data-mask] { overflow: hidden; }
+.js [data-mask] > * { display: block; transform: translateY(105%); }
+.js [data-fade] { opacity: 0; }
+.js [data-rise] { opacity: 0; transform: translateY(16px); }
+
+@media (prefers-reduced-motion: reduce) {
+  .js [data-mask] > *,
+  .js [data-fade],
+  .js [data-rise] { transform: none !important; opacity: 1 !important; }
+}

@@ -1,10 +1,10 @@
 /* ═══════════════════════════════════════════════════════════
-   MAIN STYLESHEET — Import Aggregator
+   THE CONSOLE — stylesheet entry
    ═══════════════════════════════════════════════════════════ */
 
-@import './_variables.css';
+@import './_tokens.css';
 @import './_reset.css';
-@import './_typography.css';
-@import './_glass.css';
+@import './_type.css';
+@import './_console.css';
 @import './_layout.css';
-@import './_components.css';
+@import './_sections.css';

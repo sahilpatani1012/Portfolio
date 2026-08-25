@@ -1,125 +1,75 @@
 /* ═══════════════════════════════════════════════════════════
-   MODERN CSS RESET
+   RESET
    ═══════════════════════════════════════════════════════════ */
 
-*, *::before, *::after {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 html {
   -webkit-text-size-adjust: 100%;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-rendering: optimizeLegibility;
-  scroll-behavior: auto; /* Lenis handles smooth scroll */
+  scroll-behavior: auto;
+  background: var(--void);
 }
 
 body {
   min-height: 100vh;
-  line-height: 1.6;
-  background-color: var(--bg-primary);
-  color: var(--text-primary);
-  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  background: var(--void);
+  color: var(--text);
   overflow-x: hidden;
-  transition: background-color var(--transition-slow), color var(--transition-base);
+  font-synthesis-weight: none;
 }
 
-/* ─── Media defaults ─── */
-img, picture, video, canvas, svg {
-  display: block;
-  max-width: 100%;
-}
+img, picture, video, canvas, svg { display: block; max-width: 100%; }
+img { height: auto; }
 
-img {
-  height: auto;
-}
+input, button, textarea, select { font: inherit; color: inherit; background: none; border: none; }
+button { cursor: pointer; }
 
-/* ─── Form elements ─── */
-input, button, textarea, select {
-  font: inherit;
-  color: inherit;
-}
+a { color: inherit; text-decoration: none; }
+ul, ol { list-style: none; }
 
-button {
-  cursor: pointer;
-  background: none;
-  border: none;
-}
+table { border-collapse: collapse; width: 100%; }
 
-a {
-  color: inherit;
-  text-decoration: none;
-}
-
-ul, ol {
-  list-style: none;
-}
+::selection { background: var(--signal); color: var(--void); }
 
 /* ─── Scrollbar ─── */
-::-webkit-scrollbar {
-  width: var(--scrollbar-width);
-}
+::-webkit-scrollbar { width: 9px; height: 9px; }
+::-webkit-scrollbar-track { background: var(--void); }
+::-webkit-scrollbar-thumb { background: var(--line-2); border: 2px solid var(--void); }
+::-webkit-scrollbar-thumb:hover { background: var(--line-hot); }
+html { scrollbar-width: thin; scrollbar-color: var(--line-2) var(--void); }
 
-::-webkit-scrollbar-track {
-  background: var(--scrollbar-bg);
-}
-
-::-webkit-scrollbar-thumb {
-  background: var(--scrollbar-thumb);
-  border-radius: var(--radius-full);
-}
-
-/* Firefox */
-html {
-  scrollbar-width: thin;
-  scrollbar-color: var(--scrollbar-thumb) var(--scrollbar-bg);
-}
-
-/* ─── Selection ─── */
-::selection {
-  background-color: rgba(var(--accent-primary-rgb), 0.3);
-  color: var(--text-primary);
-}
-
-/* ─── Custom cursor (desktop only) ─── */
-@media (pointer: fine) {
-  body, a, button {
-    cursor: none !important;
-  }
-}
-
-/* ─── Skip to content (a11y) ─── */
-.skip-to-content {
-  position: absolute;
-  top: -100%;
-  left: 50%;
-  transform: translateX(-50%);
-  padding: var(--space-sm) var(--space-lg);
-  background: var(--accent-primary);
-  color: #fff;
-  border-radius: var(--radius-sm);
-  font-weight: 600;
-  z-index: calc(var(--z-cursor) + 1);
-  transition: top var(--transition-fast);
-}
-
-.skip-to-content:focus {
-  top: var(--space-md);
-}
-
-/* ─── Focus visible ─── */
+/* ─── Focus ─── */
 :focus-visible {
-  outline: 2px solid var(--accent-primary);
-  outline-offset: 3px;
+  outline: 1px solid var(--signal);
+  outline-offset: 2px;
+}
+:focus:not(:focus-visible) { outline: none; }
+
+/* ─── Skip link ─── */
+.skip {
+  position: absolute;
+  top: -100px;
+  left: var(--s-4);
+  z-index: 9999;
+  padding: var(--s-2) var(--s-4);
+  background: var(--signal);
+  color: var(--void);
+  font-family: var(--mono);
+  font-size: var(--t-xs);
+  letter-spacing: var(--track-mid);
+  text-transform: uppercase;
+  transition: top var(--d-fast) var(--e-out);
+}
+.skip:focus { top: var(--s-4); }
+
+.sr {
+  position: absolute; width: 1px; height: 1px;
+  padding: 0; margin: -1px; overflow: hidden;
+  clip: rect(0,0,0,0); white-space: nowrap; border: 0;
 }
 
-:focus:not(:focus-visible) {
-  outline: none;
-}
-
-/* ─── Reduced motion ─── */
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
     animation-duration: 0.01ms !important;
