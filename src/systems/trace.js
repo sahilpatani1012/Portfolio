@@ -82,19 +82,21 @@ export const DIAGRAMS = {
     ],
   },
 
-  kanban: {
+  linkedin: {
     nodes: {
-      a:   { x: 8,   y: 14,  label: 'Client A', sub: 'edits' },
-      b:   { x: 8,   y: 76,  label: 'Client B', sub: 'observes' },
-      c:   { x: 8,   y: 138, label: 'Client C', sub: 'observes' },
-      io:  { x: 152, y: 76,  label: 'Socket.io', sub: 'fan-out', acc: true },
-      db:  { x: 300, y: 76,  label: 'MongoDB',  sub: 'optim. lock' },
+      client:  { x: 8,   y: 26,  label: 'Client',   sub: 'profile url' },
+      api:     { x: 109, y: 26,  label: 'FastAPI',  sub: 'validate', acc: true },
+      cache:   { x: 210, y: 26,  label: 'Cache',    sub: '3-layer', acc: true },
+      voyager: { x: 311, y: 26,  label: 'Voyager',  sub: '7 calls' },
+      model:   { x: 210, y: 126, label: 'Pydantic', sub: 'typed' },
+      json:    { x: 109, y: 126, label: 'JSON',     sub: '0 html' },
     },
     edges: [
-      ['a',  'io', '4ms'],
-      ['io', 'db', '9ms'],
-      ['io', 'b',  '<100ms'],
-      ['io', 'c',  '<100ms'],
+      ['client',  'api',     '3ms'],
+      ['api',     'cache',   'check'],
+      ['cache',   'voyager', 'miss'],
+      ['voyager', 'model',   '7x'],
+      ['model',   'json',    'parse'],
     ],
   },
 };

@@ -256,7 +256,7 @@
                   <dd>Payment integrations, scheduling systems, data migrations, production RCA</dd>
 
                   <dt>Runtime</dt>
-                  <dd>Node.js &middot; TypeScript &middot; Spring Boot &middot; FastAPI</dd>
+                  <dd>Node.js &middot; TypeScript &middot; Python &middot; Spring Boot &middot; FastAPI</dd>
 
                   <dt>Storage</dt>
                   <dd>MongoDB &middot; PostgreSQL &middot; MySQL &middot; Redis</dd>
@@ -298,7 +298,7 @@
                 <div class="tier-head">Client</div>
                 <button class="node" data-node="react"  data-to="nginx"    data-info="Primary UI runtime. Component-driven admin dashboards over large, permission-scoped datasets.">React</button>
                 <button class="node" data-node="redux"  data-to="nginx"    data-info="Redux Toolkit for predictable client state across long-running admin workflows.">Redux Toolkit</button>
-                <button class="node" data-node="angular" data-to="nginx"   data-info="Angular admin dashboards at Thriving Springs, operating over the full 200k+ user base.">Angular</button>
+                <button class="node" data-node="angular" data-to="nginx"   data-info="Angular admin dashboards at Thriving Springs, operating over the full 200k+ user base with RBAC-aware query paths.">Angular</button>
                 <button class="node" data-node="html"   data-to="nginx"    data-info="HTML5 and CSS3 — semantic structure, responsive layout, accessible interaction.">HTML5 / CSS3</button>
               </div>
 
@@ -315,23 +315,23 @@
                 <button class="node" data-node="node"    data-to="sqs,redis,mongo,sequelize" data-info="Node.js and Express — the primary service runtime across both roles. Payments, scheduling, LMS APIs.">Node.js / Express</button>
                 <button class="node" data-node="ts"      data-to="node"     data-info="TypeScript — typed service boundaries and contract safety across dual-write migration paths.">TypeScript</button>
                 <button class="node" data-node="spring"  data-to="jpa,sql"  data-info="Java + Spring Boot — layered Controller / Service / Repository architecture.">Spring Boot</button>
-                <button class="node" data-node="fastapi" data-to="mongo,redis" data-info="FastAPI — async Python services for LMS and OJT workflows alongside the Node stack.">FastAPI</button>
+                <button class="node" data-node="fastapi" data-to="mongo,redis" data-info="FastAPI — async Python services for LMS and OJT workflows, and the runtime behind the LinkedIn Profile API.">FastAPI</button>
                 <button class="node" data-node="micro"   data-to="sqs"      data-info="Microservices — containerised, independently deployable, communicating over queues and HTTP.">Microservices</button>
               </div>
 
               <div class="tier" data-tier="async">
                 <div class="tier-head">Async</div>
                 <button class="node" data-node="sqs"    data-to="mongo,redis" data-info="AWS SQS — backbone of Loop, the scheduling engine handling 13k+ requests a month.">AWS SQS</button>
-                <button class="node" data-node="cron"   data-to="mongo"    data-info="Cron-based email and WhatsApp pipelines — decoupled reminder delivery, +30% task completion.">Cron Pipelines</button>
+                <button class="node" data-node="cron"   data-to="mongo"    data-info="Cron and scheduled-task pipelines for email, WhatsApp and AI voice outreach — atomic reservation, dedup windows, every send auditable.">Cron Pipelines</button>
                 <button class="node" data-node="tasks"  data-to="mongo"    data-info="Scheduled tasks with atomic reservation and dedup windows — 35k+ reminders a month, zero duplicates.">Scheduled Tasks</button>
-                <button class="node" data-node="socket" data-to="mongo"    data-info="Socket.io — 50+ concurrent editors with optimistic locking and conflict-aware updates.">Socket.io</button>
+                <button class="node" data-node="socket" data-to="mongo"    data-info="Socket.io — real-time event fan-out with optimistic locking and conflict-aware updates.">Socket.io</button>
               </div>
 
               <div class="tier" data-tier="data">
                 <div class="tier-head">Data</div>
                 <button class="node" data-node="mongo"     data-info="MongoDB — index-aware schema design; cut average query latency 15% and removed stored-data redundancy.">MongoDB</button>
                 <button class="node" data-node="redis"     data-info="Redis — TTL-driven cache invalidation that stabilised API response times under traffic spikes.">Redis</button>
-                <button class="node" data-node="sql"       data-info="PostgreSQL and MySQL — normalised relational schemas, indexing and query optimisation.">PostgreSQL / MySQL</button>
+                <button class="node" data-node="sql"       data-info="PostgreSQL and MySQL — normalised relational schemas, schema design and indexing.">PostgreSQL / MySQL</button>
                 <button class="node" data-node="sequelize" data-info="Sequelize ORM — migrations and backward-compatible data contracts for staged rollouts.">Sequelize</button>
                 <button class="node" data-node="jpa"       data-info="JPA / Hibernate — normalised entity mapping separating forms, fields, responses and values.">JPA / Hibernate</button>
               </div>
@@ -493,11 +493,11 @@
           <div class="dep-body">
             <div class="dep-info">
               <h3 class="dep-title">Backend for an enterprise LMS serving 200k+ concurrent-access users</h3>
-              <p class="dep-desc">Designed and owned the backend APIs for LMS and OJT workflows in <b>Node.js and FastAPI</b>, powering automated role assignment and skill mapping for <b>200k+ active users</b>. Redesigned MongoDB schemas with index&#8209;aware access patterns &mdash; <b>15% lower average query latency</b>. Redis TTL caching held response times under traffic spikes; async notification pipelines lifted task completion <b>30%</b>.</p>
+              <p class="dep-desc">Designed and owned the backend APIs for LMS and OJT workflows in <b>Node.js and FastAPI (Python)</b>, powering automated role assignment and skill mapping for <b>200k+ active users</b> under concurrent access. Redesigned MongoDB schemas with index&#8209;aware access patterns &mdash; <b>15% lower average query latency</b>. Redis TTL caching held response times under traffic spikes, and <b>100k+ production records</b> migrated through staged rollouts with integrity checks and backward&#8209;compatible contracts &mdash; zero data loss.</p>
               <div class="dep-stats">
                 <div class="dep-stat"><span class="k">Active users</span><span class="v">200k+</span></div>
                 <div class="dep-stat"><span class="k">Query latency</span><span class="v">&minus;15%</span></div>
-                <div class="dep-stat"><span class="k">Completion</span><span class="v">+30%</span></div>
+                <div class="dep-stat"><span class="k">Records migrated</span><span class="v">100k+</span></div>
               </div>
               <div class="tag-row">
                 <span class="tag">Node.js</span><span class="tag">FastAPI</span><span class="tag">MongoDB</span><span class="tag">Redis</span><span class="tag">Docker</span><span class="tag">Kubernetes</span><span class="tag">AWS</span>
@@ -515,36 +515,41 @@
           </div>
         </article>
 
-        <!-- D5 · KANBAN -->
+        <!-- D5 · LINKEDIN PROFILE API -->
         <article class="dep" id="dep-05">
           <div class="dep-head">
             <span class="idx">D-05</span>
-            <span class="nm">realtime kanban</span>
+            <span class="nm">linkedin profile api</span>
             <span class="org">personal</span>
             <span class="push"></span>
-            <span class="pill">Personal</span>
+            <span class="pill done"><span class="dot ok"></span> Live</span>
           </div>
           <div class="dep-body">
             <div class="dep-info">
-              <h3 class="dep-title">50+ concurrent editors, sub-100ms propagation, no lost writes</h3>
-              <p class="dep-desc">A WebSocket collaboration system supporting <b>50+ concurrent users</b> with <b>sub&#8209;100ms event propagation</b>. Concurrent edits resolve through <b>optimistic locking</b> and conflict&#8209;aware updates; indexed MongoDB schemas keep reads low&#8209;latency, and WebSocket reconnection recovers state automatically rather than dropping the client.</p>
+              <h3 class="dep-title">Structured JSON from any LinkedIn profile, with no browser in the data path</h3>
+              <p class="dep-desc">Reverse&#8209;engineered LinkedIn&rsquo;s internal <b>Voyager API</b> to turn a profile URL into structured JSON &mdash; experience, education, skills, images &mdash; with <b>no browser automation and no HTML parsing anywhere in the data path</b>. Seven calls against the Dash REST surface, a three&#8209;layer cache (seed / memory / Redis), and <span class="code">curl_cffi</span> to match TLS fingerprints. Deployed on a <b>bring&#8209;your&#8209;own&#8209;session</b> model: callers pass their own cookies per request, and nothing is stored or logged.</p>
               <div class="dep-stats">
-                <div class="dep-stat"><span class="k">Concurrent</span><span class="v">50+</span></div>
-                <div class="dep-stat"><span class="k">Propagation</span><span class="v">&lt;100ms</span></div>
-                <div class="dep-stat"><span class="k">Lost writes</span><span class="v">0</span></div>
+                <div class="dep-stat"><span class="k">Headless browsers</span><span class="v">0</span></div>
+                <div class="dep-stat"><span class="k">Cache layers</span><span class="v">3</span></div>
+                <div class="dep-stat"><span class="k">Sessions stored</span><span class="v">0</span></div>
               </div>
               <div class="tag-row">
-                <span class="tag">Socket.io</span><span class="tag">Express.js</span><span class="tag">MongoDB</span><span class="tag">Angular</span><span class="tag">JWT</span>
+                <span class="tag">Python</span><span class="tag">FastAPI</span><span class="tag">Pydantic</span><span class="tag">Redis</span><span class="tag">Docker</span><span class="tag">curl_cffi</span>
+              </div>
+              <div class="dep-links">
+                <a class="dep-link" href="https://linkedin-profile-scrapper-unpf.onrender.com" target="_blank" rel="noopener noreferrer" data-cur="OPEN"><span>Live demo</span><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3.5 8.5 8.5 3.5M4.5 3.5h4v4"/></svg></a>
+                <a class="dep-link" href="https://github.com/sahilpatani1012/LinkedIn-Profile-Scrapper" target="_blank" rel="noopener noreferrer" data-cur="OPEN"><span>Source</span><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3.5 8.5 8.5 3.5M4.5 3.5h4v4"/></svg></a>
+                <span class="dep-note">free tier &mdash; first request after a quiet period takes 30&ndash;60s to wake</span>
               </div>
             </div>
             <div class="dep-diagram">
               <div class="dg-head">
                 <span class="dot idle" data-dg-dot></span>
-                <span>event fan-out</span>
+                <span>resolve path</span>
                 <span class="push"></span>
-                <button class="trace-btn" data-trace="kanban" data-cur="RUN"><span class="dot idle"></span> Run trace</button>
+                <button class="trace-btn" data-trace="linkedin" data-cur="RUN"><span class="dot idle"></span> Run trace</button>
               </div>
-              <svg class="dg" data-dg="kanban" viewBox="0 0 400 190" preserveAspectRatio="xMidYMid meet" aria-hidden="true"></svg>
+              <svg class="dg" data-dg="linkedin" viewBox="0 0 400 190" preserveAspectRatio="xMidYMid meet" aria-hidden="true"></svg>
             </div>
           </div>
         </article>
@@ -795,8 +800,7 @@
             <div class="log-line"><span class="op mod">~</span><span>Re-architected the admin scheduling-requests API from per-mentor rows to <b>request-level grouping</b> &mdash; faceted counts, server-driven search, filtering, pagination and a mentor-eligibility endpoint. Validated against live staging data, covered by Jest suites.</span></div>
             <div class="log-line"><span class="op mod">~</span><span>Rebuilt the demo reminder pipeline (AI voice calls, WhatsApp, email) as a scheduled-task system with <b>atomic call reservation</b> and dedup windows &mdash; eliminating duplicate outreach across <span class="code">35k+</span> reminders/month and making every reminder auditable.</span></div>
             <div class="log-line"><span class="op">+</span><span>Extended <b>interval-based billing across three payment gateways</b> (Stripe, PayPal, in-house), adding custom multi-month PayPal plans and mid-cycle vendor switching that preserves interval metadata to prevent billing drift.</span></div>
-            <div class="log-line"><span class="op">+</span><span>Built a read-only <b>production-replica investigation toolkit</b> &mdash; query, schema and entity-timeline CLIs with incident playbooks &mdash; for root-causing live revenue and scheduling defects safely against production data.</span></div>
-            <div class="log-line"><span class="op">+</span><span>Used it to trace a non-atomic webhook race double-charging customers (<span class="code">22</span> recurring cases across <span class="code">3</span> gateways since 2022), prove <span class="code">40%</span> of AI feedback calls were silently never firing, and surface <span class="code">95</span> demo sessions wrongly marked unattended.</span></div>
+            <div class="log-line"><span class="op">+</span><span>Built a read-only <b>production-replica investigation toolkit</b> (query, schema and entity-timeline CLIs with incident playbooks) and used it to trace a webhook race that double-charged customers (<span class="code">22</span> cases across <span class="code">3</span> gateways since 2022), prove <span class="code">40%</span> of AI feedback calls were silently never firing, and surface <span class="code">95</span> demo sessions wrongly marked unattended.</span></div>
           </div>
         </div>
 
@@ -813,9 +817,7 @@
           <div class="log-lines">
             <div class="log-line"><span class="op">+</span><span>Technical point of contact for enterprise clients including <b>Uber, HDFC Ergo and InCred</b> &mdash; diagnosed production issues, coordinated fixes and supported live feature rollouts inside customer environments.</span></div>
             <div class="log-line"><span class="op mod">~</span><span>Redesigned MongoDB schemas with <b>index-aware access patterns</b> and consolidated duplicated data paths &mdash; cutting average query latency <span class="code">15%</span> and reducing stored-data redundancy.</span></div>
-            <div class="log-line"><span class="op">+</span><span>Designed and owned backend APIs for LMS and OJT workflows in Node.js and FastAPI, powering automated role assignment and skill mapping for <span class="code">200k+</span> active users under concurrent access.</span></div>
-            <div class="log-line"><span class="op">+</span><span>Built server-driven filtering, pagination and <b>RBAC-aware query paths</b> for Angular admin dashboards operating over the full user base, sharply cutting data-discovery time on large datasets.</span></div>
-            <div class="log-line"><span class="op">+</span><span>Built asynchronous cron-based email and WhatsApp notification pipelines, decoupling reminder delivery from synchronous workflows and improving task completion rates <span class="code">30%</span>.</span></div>
+            <div class="log-line"><span class="op">+</span><span>Designed and owned backend APIs for LMS and OJT workflows in Node.js and FastAPI (Python), powering automated role assignment and skill mapping for <span class="code">200k+</span> active users under concurrent access.</span></div>
             <div class="log-line"><span class="op mod">~</span><span>Migrated and validated <span class="code">100k+</span> production records via staged rollouts, integrity checks and backward-compatible data contracts with <b>zero data loss</b>; built bulk CSV ingestion with schema validation and partial-failure recovery for <span class="code">200k+</span>-user onboarding.</span></div>
             <div class="log-line"><span class="op mod">~</span><span>Stabilised API response times under traffic spikes using <b>Redis caching with TTL-driven invalidation</b>; deployed containerised microservices on Docker and Kubernetes in AWS-hosted environments.</span></div>
           </div>

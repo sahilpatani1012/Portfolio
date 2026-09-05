@@ -410,6 +410,40 @@ body.hot .cur-tag { opacity: 1; }
   font-variant-numeric: tabular-nums; letter-spacing: -0.01em;
 }
 
+/* Project links — only shown where a project actually has a public URL. */
+.dep-links {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--s-3);
+  padding-top: var(--s-2);
+}
+
+.dep-link {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--s-2);
+  padding: 4px var(--s-3);
+  border: 1px solid var(--line-2);
+  border-radius: var(--r-1);
+  background: var(--void);
+  font-family: var(--mono);
+  font-size: var(--t-micro);
+  letter-spacing: var(--track-mid);
+  text-transform: uppercase;
+  color: var(--dim);
+  transition: color var(--d-fast) var(--e-out), border-color var(--d-fast) var(--e-out);
+}
+.dep-link svg { width: 11px; height: 11px; }
+.dep-link:hover { color: var(--signal); border-color: var(--signal-edge); }
+
+.dep-note {
+  font-family: var(--mono);
+  font-size: var(--t-micro);
+  letter-spacing: var(--track-mid);
+  color: var(--faint);
+}
+
 .dep-diagram {
   border-left: 1px solid var(--line);
   background: var(--void);
